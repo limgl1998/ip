@@ -26,6 +26,8 @@ public class Duke {
         System.out.println("    ____________________________________________________________");
         if (command.equals("list")) {
             list.printTaskList();
+        } else if (command.contains("done")) {
+            list.markAsDone(command);
         } else {
             list.addTask(command);
         }
