@@ -3,25 +3,25 @@ public class TaskList {
     private static int numberOfTasks;
 
     public TaskList() {
-        this.list = new Task[100];
-        this.numberOfTasks = 0;
+        list = new Task[100];
+        numberOfTasks = 0;
     }
 
     public void addTask(String description) {
-        this.list[numberOfTasks] = new Task(description);
-        this.numberOfTasks++;
+        list[numberOfTasks] = new Task(description);
+        numberOfTasks++;
         System.out.println("     added: " + description);
     }
 
     public void printTaskList() {
         System.out.println("     Here are the tasks in your list:");
         for (int i = 0; i < numberOfTasks; i++) {
-            System.out.println("     " + (i+1) + ". [" + this.list[i].getStatusIcon() + "] " + this.list[i].description);
+            System.out.println("     " + (i+1) + "." + list[i].getStatusIcon() + list[i].description);
         }
     }
 
     public void markAsDone(String command) {
-        command = command.replace("done", "");
+        command = command.toLowerCase().replace("done", "");
         command = command.strip();
         int index;
         index = Integer.parseInt(command);
@@ -30,9 +30,9 @@ public class TaskList {
         if(index >= numberOfTasks || index < 0) {
             System.out.println("     Invalid task number. Please try again.");
         } else {
-            this.list[index].markTaskAsDone();
+            list[index].markTaskAsDone();
             System.out.println("     Nice! I've marked this task as done!");
-            System.out.println("     " + " [" + this.list[index].getStatusIcon() + "] " + this.list[index].description);
+            System.out.println("     " + list[index].getStatusIcon() + list[index].description);
         }
     }
 
