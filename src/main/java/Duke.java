@@ -21,19 +21,25 @@ public class Duke {
         System.out.println("    ____________________________________________________________");
     }
 
-    public static void handlesCommand(String command){
+    public static void handlesCommand(String command, TaskList list){
+
         System.out.println("    ____________________________________________________________");
-        System.out.println("     " + command);
+        if (command.equals("list")) {
+            list.printTaskList();
+        } else {
+            list.addTask(command);
+        }
         System.out.println("    ____________________________________________________________");
     }
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        TaskList list = new TaskList();
 
         start();
         String command = in.nextLine();
-        while (command.equals("bye")==false) {
-            handlesCommand(command);
+        while (!command.equals("bye")) {
+            handlesCommand(command,list);
             command = in.nextLine();
         }
 
