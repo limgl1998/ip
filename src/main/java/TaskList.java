@@ -19,7 +19,12 @@ public class TaskList {
     }
 
     public void markAsDone(String command) {
-        command = removeCommandFromInput(command , "done");
+        command = removeCommandFromInput(command , CommandType.done);
+        //Error handling for input "done" without task number
+        if(command.isEmpty()|| !isNumeric(command)) {
+            Message.printInvalidInput();
+            return;
+        }
         int index;
         index = Integer.parseInt(command);
         index--;
@@ -33,8 +38,20 @@ public class TaskList {
         }
     }
 
-    private String removeCommandFromInput(String input, String command) {
-        int commandLength = command.length();
+    private boolean isNumeric(String command) {
+        if(command.isEmpty()) {
+            return false;
+        }
+        for (char c: command.toCharArray()) {
+            if(!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private String removeCommandFromInput(String input, CommandType command) {
+        int commandLength = command.toString().length();
         input = input.strip();
         input = input.substring(commandLength);
         input = input.strip();
@@ -43,7 +60,7 @@ public class TaskList {
 
     public void addTask(String description) {
         Message.printGotIt();
-        description = removeCommandFromInput(description, "todo");
+        description = removeCommandFromInput(description, CommandType.todo);
         list[numberOfTasks] = new ToDo(description);
         System.out.println("       " + list[numberOfTasks].getStatusAndDescription());
         numberOfTasks++;
@@ -56,7 +73,7 @@ public class TaskList {
             return;
         }
         Message.printGotIt();
-        description = removeCommandFromInput(description, "event");
+        description = removeCommandFromInput(description, CommandType.event);
         String[] eventInformation = description.split("/at", 2);
         /* eventInformation[0] = description of event
          * eventInformation[1] = event date
@@ -73,7 +90,7 @@ public class TaskList {
             return;
         }
         Message.printGotIt();
-        description = removeCommandFromInput(description, "deadline");
+        description = removeCommandFromInput(description, CommandType.deadline);
         String[] deadlineInformation = description.split("/by", 2);
         /* deadlineInformation[0] = description of task
          * deadlineInformation[1] = deadline date
