@@ -22,4 +22,16 @@ public class Message {
         System.out.println("    ____________________________________________________________");
     }
 
+    public static void printGotIt() {
+        System.out.println("     Got it. I've added this task:");
+    }
+
+    public static void printNumberOfTasksInList(int numberOfTasks) {
+        boolean isMoreThanOne = (numberOfTasks > 1);
+        System.out.println("     Now you have "+ numberOfTasks + " task" + (isMoreThanOne?"s":"") +" in the list.");
+    }
+
+    public static void printInvalidInput() {
+        System.out.println("    Invalid Input. Please try again.");
+    }
 }
