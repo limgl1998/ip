@@ -1,4 +1,6 @@
 public class TaskList {
+    private static final int NUMBER_OF_PARTS = 2;
+
     private Task[] list;
     private static int numberOfTasks;
 
@@ -19,14 +21,13 @@ public class TaskList {
     }
 
     public void markAsDone(String command) {
-        command = removeCommandFromInput(command , CommandType.done);
+        command = GeneralMethods.removeCommandFromInput(command , CommandType.done);
         //Error handling for input "done" without task number
-        if(command.isEmpty()|| !isNumeric(command)) {
+        if(command.isEmpty()|| !GeneralMethods.isNumeric(command)) {
             Message.printInvalidInput();
             return;
         }
-        int index;
-        index = Integer.parseInt(command);
+        int index = Integer.parseInt(command);
         index--;
         //Error handling for invalid task number
         if(index >= numberOfTasks || index < 0) {
@@ -38,33 +39,11 @@ public class TaskList {
         }
     }
 
-    private boolean isNumeric(String command) {
-        if(command.isEmpty()) {
-            return false;
-        }
-        for (char c: command.toCharArray()) {
-            if(!Character.isDigit(c)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private String removeCommandFromInput(String input, CommandType command) {
-        int commandLength = command.toString().length();
-        input = input.strip();
-        input = input.substring(commandLength);
-        input = input.strip();
-        return input;
-    }
-
     public void addTask(String description) {
         Message.printGotIt();
-        description = removeCommandFromInput(description, CommandType.todo);
+        description = GeneralMethods.removeCommandFromInput(description, CommandType.todo);
         list[numberOfTasks] = new ToDo(description);
-        System.out.println("       " + list[numberOfTasks].getStatusAndDescription());
-        numberOfTasks++;
-        Message.printNumberOfTasksInList(numberOfTasks);
+        printStatusDescriptionAndNumberOftasks();
     }
 
     public void addEvent(String description) {
@@ -73,15 +52,13 @@ public class TaskList {
             return;
         }
         Message.printGotIt();
-        description = removeCommandFromInput(description, CommandType.event);
-        String[] eventInformation = description.split("/at", 2);
+        description = GeneralMethods.removeCommandFromInput(description, CommandType.event);
+        String[] eventInformation = description.split("/at", NUMBER_OF_PARTS);
         /* eventInformation[0] = description of event
          * eventInformation[1] = event date
          */
         list[numberOfTasks] = new Event(eventInformation[0],eventInformation[1].strip());
-        System.out.println("       " + list[numberOfTasks].getStatusAndDescription());
-        numberOfTasks++;
-        Message.printNumberOfTasksInList(numberOfTasks);
+        printStatusDescriptionAndNumberOftasks();
     }
 
     public void addDeadline(String description) {
@@ -90,12 +67,16 @@ public class TaskList {
             return;
         }
         Message.printGotIt();
-        description = removeCommandFromInput(description, CommandType.deadline);
-        String[] deadlineInformation = description.split("/by", 2);
+        description = GeneralMethods.removeCommandFromInput(description, CommandType.deadline);
+        String[] deadlineInformation = description.split("/by", NUMBER_OF_PARTS);
         /* deadlineInformation[0] = description of task
          * deadlineInformation[1] = deadline date
          */
         list[numberOfTasks] = new Deadline(deadlineInformation[0],deadlineInformation[1].strip());
+        printStatusDescriptionAndNumberOftasks();
+    }
+
+    private void printStatusDescriptionAndNumberOftasks() {
         System.out.println("       " + list[numberOfTasks].getStatusAndDescription());
         numberOfTasks++;
         Message.printNumberOfTasksInList(numberOfTasks);

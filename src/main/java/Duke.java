@@ -6,13 +6,11 @@ public class Duke {
         Scanner in = new Scanner(System.in);
 
         Message.start();
-
         String command = in.nextLine();
         while (!command.equalsIgnoreCase("bye")) {
-            HandleCommand.handlesCommand(command);
+            HandleInput.handlesInput(command);
             command = in.nextLine();
         }
-
         Message.exit();
 
     }

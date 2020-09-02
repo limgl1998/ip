@@ -1,0 +1,32 @@
+public class HandleInput {
+
+    private static final TaskList list = new TaskList();
+
+    public static void handlesInput(String input){
+
+        Message.printDashedLine();
+        if (isCommand(input, "list")) {
+            list.printTaskList();
+        } else if (isCommand(input,"done")) {
+            list.markAsDone(input);
+        } else if (isCommand(input,"deadline")) {
+            list.addDeadline(input);
+        } else if (isCommand(input,"event")) {
+            list.addEvent(input);
+        }  else if (isCommand(input,"todo")) {
+            list.addTask(input);
+        } else {
+            Message.printInvalidInput();
+        }
+        Message.printDashedLine();
+    }
+
+    private static boolean isCommand(String input, String command) {
+        if (input.strip().equalsIgnoreCase("list")) {
+            return true;
+        } else {
+            return input.strip().toLowerCase().startsWith(command);
+        }
+    }
+}
+
