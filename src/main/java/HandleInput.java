@@ -22,8 +22,8 @@ public class HandleInput {
     }
 
     private static boolean isCommand(String input, String command) {
-        if (input.strip().equalsIgnoreCase("list")) {
-            return true;
+        if (input.strip().toLowerCase().contains("list")) {
+            return input.strip().equalsIgnoreCase("list");
         } else {
             return input.strip().toLowerCase().startsWith(command);
         }

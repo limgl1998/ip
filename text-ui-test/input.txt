@@ -1,0 +1,17 @@
+todo borrow book
+list
+done 0
+done 2
+done -1
+done 1
+list
+lists
+deadline return book /by Sunday
+event project meeting /at Mon 2-4pm
+list
+      done 2
+done             3
+done $2
+deadline tutorial tonight
+event lunch with cousins saturday
+bye
