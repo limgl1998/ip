@@ -2,18 +2,18 @@ public class HandleInput {
 
     private static final TaskList list = new TaskList();
 
-    public static void handlesInput(String input){
+    public static void handlesInput(String input) {
 
         Message.printDashedLine();
         if (isCommand(input, "list")) {
             list.printTaskList();
-        } else if (isCommand(input,"done")) {
+        } else if (isCommand(input, "done")) {
             list.markAsDone(input);
-        } else if (isCommand(input,"deadline")) {
+        } else if (isCommand(input, "deadline")) {
             list.addDeadline(input);
-        } else if (isCommand(input,"event")) {
+        } else if (isCommand(input, "event")) {
             list.addEvent(input);
-        }  else if (isCommand(input,"todo")) {
+        } else if (isCommand(input, "todo")) {
             list.addTask(input);
         } else {
             Message.printInvalidInput();

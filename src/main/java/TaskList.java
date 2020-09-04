@@ -16,21 +16,21 @@ public class TaskList {
     public void printTaskList() {
         System.out.println("     Here are the tasks in your list:");
         for (int i = 0; i < numberOfTasks; i++) {
-            System.out.println("     " + (i+1) + ". " + list[i].getStatusAndDescription());
+            System.out.println("     " + (i + 1) + ". " + list[i].getStatusAndDescription());
         }
     }
 
     public void markAsDone(String command) {
-        command = GeneralMethods.removeCommandFromInput(command , CommandType.done);
+        command = GeneralMethods.removeCommandFromInput(command, CommandType.done);
         //Error handling for input "done" without task number
-        if(command.isEmpty()|| !GeneralMethods.isNumeric(command)) {
+        if (command.isEmpty() || !GeneralMethods.isNumeric(command)) {
             Message.printInvalidInput();
             return;
         }
         int index = Integer.parseInt(command);
         index--;
         //Error handling for invalid task number
-        if(index >= numberOfTasks || index < 0) {
+        if (index >= numberOfTasks || index < 0) {
             Message.printInvalidInput();
         } else {
             list[index].markTaskAsDone();
@@ -57,7 +57,7 @@ public class TaskList {
         /* eventInformation[0] = description of event
          * eventInformation[1] = event date
          */
-        list[numberOfTasks] = new Event(eventInformation[0],eventInformation[1].strip());
+        list[numberOfTasks] = new Event(eventInformation[0], eventInformation[1].strip());
         printStatusDescriptionAndNumberOftasks();
     }
 
@@ -72,7 +72,7 @@ public class TaskList {
         /* deadlineInformation[0] = description of task
          * deadlineInformation[1] = deadline date
          */
-        list[numberOfTasks] = new Deadline(deadlineInformation[0],deadlineInformation[1].strip());
+        list[numberOfTasks] = new Deadline(deadlineInformation[0], deadlineInformation[1].strip());
         printStatusDescriptionAndNumberOftasks();
     }
 

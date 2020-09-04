@@ -1,4 +1,4 @@
-public class Deadline extends Task{
+public class Deadline extends Task {
     protected String by;
 
     public Deadline(String description, String by) {
@@ -7,7 +7,7 @@ public class Deadline extends Task{
     }
 
     @Override
-    public String getStatusAndDescription(){
+    public String getStatusAndDescription() {
         return "[D]" + super.getStatusAndDescription() + "(by: " + by + ")";
     }
 

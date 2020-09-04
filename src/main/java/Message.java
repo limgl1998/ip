@@ -1,5 +1,5 @@
 public class Message {
-    public static void start(){
+    public static void start() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -12,7 +12,7 @@ public class Message {
         printDashedLine();
     }
 
-    public static void exit(){
+    public static void exit() {
         printDashedLine();
         System.out.println("    Bye. Hope to see you again soon!");
         printDashedLine();
@@ -28,7 +28,7 @@ public class Message {
 
     public static void printNumberOfTasksInList(int numberOfTasks) {
         boolean isMoreThanOne = (numberOfTasks > 1);
-        System.out.println("     Now you have "+ numberOfTasks + " task" + (isMoreThanOne?"s":"") +" in the list.");
+        System.out.println("     Now you have " + numberOfTasks + " task" + (isMoreThanOne ? "s" : "") + " in the list.");
     }
 
     public static void printInvalidInput() {

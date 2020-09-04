@@ -9,11 +9,11 @@ public class GeneralMethods {
     }
 
     public static boolean isNumeric(String command) {
-        if(command.isEmpty()) {
+        if (command.isEmpty()) {
             return false;
         }
-        for (char c: command.toCharArray()) {
-            if(!Character.isDigit(c)) {
+        for (char c : command.toCharArray()) {
+            if (!Character.isDigit(c)) {
                 return false;
             }
         }
