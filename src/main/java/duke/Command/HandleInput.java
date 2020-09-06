@@ -1,6 +1,5 @@
 package duke.Command;
 
-import duke.Message;
 import duke.Tasks.TaskList;
 
 public class HandleInput {

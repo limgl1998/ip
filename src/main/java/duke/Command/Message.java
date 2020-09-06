@@ -1,4 +1,4 @@
-package duke;
+package duke.Command;
 
 public class Message {
     public static void start() {
