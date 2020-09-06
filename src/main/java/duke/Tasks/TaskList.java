@@ -1,3 +1,9 @@
+package duke.Tasks;
+
+import duke.Command.CommandType;
+import duke.GeneralMethods;
+import duke.Command.Message;
+
 public class TaskList {
     private static final int NUMBER_OF_PARTS = 2;
 

@@ -1,3 +1,7 @@
+package duke.Command;
+
+import duke.Tasks.TaskList;
+
 public class HandleInput {
 
     private static final TaskList list = new TaskList();
