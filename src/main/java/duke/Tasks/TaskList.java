@@ -1,3 +1,13 @@
+package duke.Tasks;
+
+import duke.Command.CommandType;
+import duke.GeneralMethods;
+import duke.Message;
+import duke.Tasks.Deadline;
+import duke.Tasks.Event;
+import duke.Tasks.Task;
+import duke.Tasks.ToDo;
+
 public class TaskList {
     private static final int NUMBER_OF_PARTS = 2;
 

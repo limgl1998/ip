@@ -1,3 +1,5 @@
+package duke;
+
 public class Message {
     public static void start() {
         String logo = " ____        _        \n"

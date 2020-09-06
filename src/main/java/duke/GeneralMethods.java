@@ -1,3 +1,7 @@
+package duke;
+
+import duke.Command.CommandType;
+
 public class GeneralMethods {
 
     public static String removeCommandFromInput(String input, CommandType command) {
