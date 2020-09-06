@@ -83,7 +83,7 @@ public class TaskList {
         /* deadlineInformation[0] = description of task
          * deadlineInformation[1] = deadline date
          */
-        if(doNotHaveDescription(deadlineInformation)) {
+        if (doNotHaveDescription(deadlineInformation)) {
             Message.printEmptyDeadlineDescription();
             return;
         }

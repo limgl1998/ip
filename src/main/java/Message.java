@@ -48,7 +48,7 @@ public class Message {
     }
 
     public static void printInvalidTaskNumber(int numberOfTasks) {
-        System.out.println("    \u2639 OOPS!!! Please input a task number between 1 and "+ numberOfTasks + ".");
+        System.out.println("    \u2639 OOPS!!! Please input a task number between 1 and " + numberOfTasks + ".");
     }
 
     public static void printEmptyTasklist() {
