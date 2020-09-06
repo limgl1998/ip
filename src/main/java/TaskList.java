@@ -23,15 +23,18 @@ public class TaskList {
     public void markAsDone(String command) {
         command = GeneralMethods.removeCommandFromInput(command, CommandType.done);
         //Error handling for input "done" without task number
-        if (command.isEmpty() || !GeneralMethods.isNumeric(command)) {
-            Message.printInvalidInput();
+        if (numberOfTasks == 0) {
+            Message.printEmptyTasklist();
+            return;
+        } else if (command.isEmpty() || !GeneralMethods.isNumeric(command)) {
+            Message.printInvalidTaskNumber(numberOfTasks);
             return;
         }
         int index = Integer.parseInt(command);
         index--;
         //Error handling for invalid task number
         if (index >= numberOfTasks || index < 0) {
-            Message.printInvalidInput();
+            Message.printInvalidTaskNumber(numberOfTasks);
         } else {
             list[index].markTaskAsDone();
             System.out.println("     Nice! I've marked this task as done!");
@@ -42,13 +45,17 @@ public class TaskList {
     public void addTask(String description) {
         Message.printGotIt();
         description = GeneralMethods.removeCommandFromInput(description, CommandType.todo);
+        if (description.isEmpty()) {
+            Message.printEmptyTodoDescription();
+            return;
+        }
         list[numberOfTasks] = new ToDo(description);
         printStatusDescriptionAndNumberOftasks();
     }
 
     public void addEvent(String description) {
         if (!description.contains("/at")) {
-            Message.printInvalidInput();
+            Message.printMissingKeyword("/at");
             return;
         }
         Message.printGotIt();
@@ -57,13 +64,17 @@ public class TaskList {
         /* eventInformation[0] = description of event
          * eventInformation[1] = event date
          */
+        if (doNotHaveDescription(eventInformation)) {
+            Message.printEmptyEventDescription();
+            return;
+        }
         list[numberOfTasks] = new Event(eventInformation[0], eventInformation[1].strip());
         printStatusDescriptionAndNumberOftasks();
     }
 
     public void addDeadline(String description) {
         if (!description.contains("/by")) {
-            Message.printInvalidInput();
+            Message.printMissingKeyword("/by");
             return;
         }
         Message.printGotIt();
@@ -72,6 +83,10 @@ public class TaskList {
         /* deadlineInformation[0] = description of task
          * deadlineInformation[1] = deadline date
          */
+        if(doNotHaveDescription(deadlineInformation)) {
+            Message.printEmptyDeadlineDescription();
+            return;
+        }
         list[numberOfTasks] = new Deadline(deadlineInformation[0], deadlineInformation[1].strip());
         printStatusDescriptionAndNumberOftasks();
     }
@@ -80,5 +95,9 @@ public class TaskList {
         System.out.println("       " + list[numberOfTasks].getStatusAndDescription());
         numberOfTasks++;
         Message.printNumberOfTasksInList(numberOfTasks);
+    }
+
+    private boolean doNotHaveDescription(String[] input) {
+        return input.length != 2;
     }
 }

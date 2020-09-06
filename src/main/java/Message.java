@@ -32,6 +32,30 @@ public class Message {
     }
 
     public static void printInvalidInput() {
-        System.out.println("    Invalid Input. Please try again.");
+        System.out.println("    \u2639 OOPS!!! I'm sorry, but I don't know what that means :-(");
+    }
+
+    public static void printEmptyTodoDescription() {
+        System.out.println("    \u2639 OOPS!!! The description of a todo cannot be empty.");
+    }
+
+    public static void printEmptyEventDescription() {
+        System.out.println("    \u2639 OOPS!!! The description of an event cannot be empty.");
+    }
+
+    public static void printEmptyDeadlineDescription() {
+        System.out.println("    \u2639 OOPS!!! The description of a deadline cannot be empty.");
+    }
+
+    public static void printInvalidTaskNumber(int numberOfTasks) {
+        System.out.println("    \u2639 OOPS!!! Please input a task number between 1 and "+ numberOfTasks + ".");
+    }
+
+    public static void printEmptyTasklist() {
+        System.out.println("    \u2639 OOPS!!! List is empty");
+    }
+
+    public static void printMissingKeyword(String keyword) {
+        System.out.println("    \u2639 OOPS!!! Please include the keyword " + keyword + " .");
     }
 }
