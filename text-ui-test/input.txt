@@ -14,4 +14,6 @@ done             3
 done $2
 deadline tutorial tonight
 event lunch with cousins saturday
+event
+deadline
 bye

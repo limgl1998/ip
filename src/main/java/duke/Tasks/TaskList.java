@@ -1,6 +1,7 @@
 package duke.Tasks;
 
 import duke.Command.CommandType;
+import duke.Command.DukeException;
 import duke.GeneralMethods;
 import duke.Command.Message;
 
@@ -39,24 +40,27 @@ public class TaskList {
         int index = Integer.parseInt(command);
         index--;
         //Error handling for invalid task number
-        if (index >= numberOfTasks || index < 0) {
-            Message.printInvalidTaskNumber(numberOfTasks);
-        } else {
+        try {
             list[index].markTaskAsDone();
             System.out.println("     Nice! I've marked this task as done!");
             System.out.println("      " + list[index].getStatusAndDescription());
+        } catch (IndexOutOfBoundsException e) {
+            Message.printInvalidTaskNumber(numberOfTasks);
         }
     }
 
     public void addTask(String description) {
-        Message.printGotIt();
         description = GeneralMethods.removeCommandFromInput(description, CommandType.todo);
+
         if (description.isEmpty()) {
             Message.printEmptyTodoDescription();
             return;
+        } else {
+            Message.printGotIt();
+            list[numberOfTasks] = new ToDo(description);
+            printStatusDescriptionAndNumberOftasks();
         }
-        list[numberOfTasks] = new ToDo(description);
-        printStatusDescriptionAndNumberOftasks();
+
     }
 
     public void addEvent(String description) {

@@ -9,20 +9,24 @@ public class HandleInput {
     public static void handlesInput(String input) {
 
         Message.printDashedLine();
-        if (isCommand(input, "list")) {
-            list.printTaskList();
-        } else if (isCommand(input, "done")) {
-            list.markAsDone(input);
-        } else if (isCommand(input, "deadline")) {
-            list.addDeadline(input);
-        } else if (isCommand(input, "event")) {
-            list.addEvent(input);
-        } else if (isCommand(input, "todo")) {
-            list.addTask(input);
-        } else {
+        try {
+            if (isCommand(input, "list")) {
+                list.printTaskList();
+            } else if (isCommand(input, "done")) {
+                list.markAsDone(input);
+            } else if (isCommand(input, "deadline")) {
+                list.addDeadline(input);
+            } else if (isCommand(input, "event")) {
+                list.addEvent(input);
+            } else if (isCommand(input, "todo")) {
+                list.addTask(input);
+            } else {
+                throw new DukeException();
+            }
+            Message.printDashedLine();
+        } catch (DukeException e) {
             Message.printInvalidInput();
         }
-        Message.printDashedLine();
     }
 
     private static boolean isCommand(String input, String command) {
