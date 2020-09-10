@@ -44,7 +44,7 @@ public class TaskList {
             list[index].markTaskAsDone();
             System.out.println("     Nice! I've marked this task as done!");
             System.out.println("      " + list[index].getStatusAndDescription());
-        } catch (IndexOutOfBoundsException e) {
+        } catch (NullPointerException | IndexOutOfBoundsException e) {
             Message.printInvalidTaskNumber(numberOfTasks);
         }
     }
@@ -55,12 +55,10 @@ public class TaskList {
         if (description.isEmpty()) {
             Message.printEmptyTodoDescription();
             return;
-        } else {
-            Message.printGotIt();
-            list[numberOfTasks] = new ToDo(description);
-            printStatusDescriptionAndNumberOftasks();
         }
-
+        Message.printGotIt();
+        list[numberOfTasks] = new ToDo(description);
+        printStatusDescriptionAndNumberOftasks();
     }
 
     public void addEvent(String description) {
@@ -108,6 +106,6 @@ public class TaskList {
     }
 
     private boolean doNotHaveDescription(String[] input) {
-        return input.length != 2;
+        return input.length != NUMBER_OF_PARTS;
     }
 }
