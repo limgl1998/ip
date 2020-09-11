@@ -52,13 +52,16 @@ public class TaskList {
     public void addTask(String description) {
         description = GeneralMethods.removeCommandFromInput(description, CommandType.todo);
 
-        if (description.isEmpty()) {
+        try {
+            if (description.isEmpty()) {
+                throw new DukeException();
+            }
+            Message.printGotIt();
+            list[numberOfTasks] = new ToDo(description);
+            printStatusDescriptionAndNumberOftasks();
+        } catch (DukeException e) {
             Message.printEmptyTodoDescription();
-            return;
         }
-        Message.printGotIt();
-        list[numberOfTasks] = new ToDo(description);
-        printStatusDescriptionAndNumberOftasks();
     }
 
     public void addEvent(String description) {

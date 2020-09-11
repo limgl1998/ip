@@ -23,10 +23,10 @@ public class HandleInput {
             } else {
                 throw new DukeException();
             }
-            Message.printDashedLine();
         } catch (DukeException e) {
             Message.printInvalidInput();
         }
+        Message.printDashedLine();
     }
 
     private static boolean isCommand(String input, String command) {
