@@ -4,6 +4,7 @@ import duke.Command.CommandType;
 import duke.Command.DukeException;
 import duke.GeneralMethods;
 import duke.Command.Message;
+import jdk.jshell.execution.JdiExecutionControl;
 
 import java.util.ArrayList;
 
@@ -32,11 +33,7 @@ public class TaskList {
     public void markAsDone(String command) {
         command = GeneralMethods.removeCommandFromInput(command, CommandType.done);
         //Error handling for input "done" without task number
-        if (numberOfTasks == 0) {
-            Message.printEmptyTasklist();
-            return;
-        } else if (command.isEmpty() || !GeneralMethods.isNumeric(command)) {
-            Message.printInvalidTaskNumber(numberOfTasks);
+        if (isTaskListEmptyOrIsCommandTypeInvalid(command)) {
             return;
         }
         int index = Integer.parseInt(command);
@@ -44,7 +41,7 @@ public class TaskList {
         //Error handling for invalid task number
         try {
             list.get(index).markTaskAsDone();
-            System.out.println("     Nice! I've marked this task as done!");
+            Message.printTaskIsMarkedAsDone();
             System.out.println("      " + list.get(index).getStatusAndDescription());
         } catch (NullPointerException | IndexOutOfBoundsException e) {
             Message.printInvalidTaskNumber(numberOfTasks);
@@ -112,5 +109,37 @@ public class TaskList {
 
     private boolean doNotHaveDescription(String[] input) {
         return input.length != NUMBER_OF_PARTS;
+    }
+
+    public void deleteTask(String command) {
+        command = GeneralMethods.removeCommandFromInput(command, CommandType.delete);
+        if (isTaskListEmptyOrIsCommandTypeInvalid(command)) {
+            return;
+        }
+        int index = Integer.parseInt(command);
+        index--;
+        //Error handling for invalid task number
+        try {
+            if (index>= numberOfTasks || index < 0) {
+                throw new DukeException();
+            }
+            Message.printTaskIsDeleted();
+            System.out.println("      " + list.get(index).getStatusAndDescription());
+            list.remove(index);
+            Message.printNumberOfTasksInList(--numberOfTasks);
+        } catch (DukeException e) {
+            Message.printInvalidTaskNumber(numberOfTasks);
+        }
+    }
+
+    private boolean isTaskListEmptyOrIsCommandTypeInvalid(String command) {
+        if (numberOfTasks == 0) {
+            Message.printEmptyTasklist();
+            return true;
+        } else if (command.isEmpty() || !GeneralMethods.isNumeric(command)) {
+            Message.printInvalidTaskNumber(numberOfTasks);
+            return true;
+        }
+        return false;
     }
 }
