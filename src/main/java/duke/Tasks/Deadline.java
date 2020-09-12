@@ -15,4 +15,8 @@ public class Deadline extends Task {
         return "[D]" + super.getStatusAndDescription() + "(by: " + by + ")";
     }
 
+    @Override
+    public String getAdditionalInfomation() {
+        return by;
+    }
 }

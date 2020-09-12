@@ -5,6 +5,8 @@ import duke.Command.DukeException;
 import duke.GeneralMethods;
 import duke.Command.Message;
 
+import java.util.List;
+
 public class TaskList {
     private static final int NUMBER_OF_PARTS = 2;
 
@@ -110,5 +112,9 @@ public class TaskList {
 
     private boolean doNotHaveDescription(String[] input) {
         return input.length != NUMBER_OF_PARTS;
+    }
+
+    public Task[] getList() {
+        return list;
     }
 }

@@ -2,6 +2,7 @@ package duke;
 
 import duke.Command.HandleInput;
 import duke.Command.Message;
+import duke.FileIO.FileIO;
 
 import java.util.Scanner;
 
@@ -9,14 +10,14 @@ public class Duke {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        boolean endDuke = false;
 
+        FileIO.readFromFile();
         Message.start();
-        String command = in.nextLine();
-        while (!command.equalsIgnoreCase("bye")) {
-            HandleInput.handlesInput(command);
-            command = in.nextLine();
+        while (!endDuke) {
+            String command = in.nextLine();
+            endDuke = HandleInput.handlesInput(command);
         }
         Message.exit();
-
     }
 }

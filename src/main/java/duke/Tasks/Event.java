@@ -10,8 +10,17 @@ public class Event extends Task {
         this.at = at;
     }
 
+    public String getAt() {
+        return at;
+    }
+
     @Override
     public String getStatusAndDescription() {
         return "[E]" + super.getStatusAndDescription() + "(at: " + at + ")";
+    }
+
+    @Override
+    public String getAdditionalInfomation() {
+        return at;
     }
 }
