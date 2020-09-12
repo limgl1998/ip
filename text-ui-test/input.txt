@@ -17,4 +17,9 @@ event lunch with cousins saturday
 event
 deadline
 todo
+delete
+delete 5
+delete -1
+delete 2
+list
 bye

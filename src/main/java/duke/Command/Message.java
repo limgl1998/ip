@@ -60,4 +60,12 @@ public class Message {
     public static void printMissingKeyword(String keyword) {
         System.out.println("    \u2639 OOPS!!! Please include the keyword " + keyword + " .");
     }
+
+    public static void printTaskIsDeleted() {
+        System.out.println("     Noted. I've removed this task:");
+    }
+
+    public static void printTaskIsMarkedAsDone() {
+        System.out.println("     Nice! I've marked this task as done!");
+    }
 }

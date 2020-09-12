@@ -20,6 +20,8 @@ public class HandleInput {
                 list.addEvent(input);
             } else if (isCommand(input, "todo")) {
                 list.addTask(input);
+            } else if (isCommand(input, "delete")) {
+                list.deleteTask(input);
             } else {
                 throw new DukeException();
             }
