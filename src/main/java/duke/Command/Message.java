@@ -15,7 +15,6 @@ public class Message {
     }
 
     public static void exit() {
-        printDashedLine();
         System.out.println("    Bye. Hope to see you again soon!");
         printDashedLine();
     }

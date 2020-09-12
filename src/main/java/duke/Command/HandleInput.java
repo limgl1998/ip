@@ -1,12 +1,13 @@
 package duke.Command;
 
+import duke.FileIO.FileIO;
 import duke.Tasks.TaskList;
 
 public class HandleInput {
 
     private static final TaskList list = new TaskList();
 
-    public static void handlesInput(String input) {
+    public static boolean handlesInput(String input) {
 
         Message.printDashedLine();
         try {
@@ -22,6 +23,9 @@ public class HandleInput {
                 list.addTask(input);
             } else if (isCommand(input, "delete")) {
                 list.deleteTask(input);
+            } else if (isCommand(input, "bye")){
+                FileIO.writeToFile(list);
+                return true;
             } else {
                 throw new DukeException();
             }
@@ -29,6 +33,8 @@ public class HandleInput {
             Message.printInvalidInput();
         }
         Message.printDashedLine();
+        return false;
+
     }
 
     private static boolean isCommand(String input, String command) {

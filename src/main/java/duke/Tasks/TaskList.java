@@ -4,9 +4,8 @@ import duke.Command.CommandType;
 import duke.Command.DukeException;
 import duke.GeneralMethods;
 import duke.Command.Message;
-import jdk.jshell.execution.JdiExecutionControl;
-
 import java.util.ArrayList;
+
 
 public class TaskList {
     private static final int NUMBER_OF_PARTS = 2;
@@ -141,5 +140,9 @@ public class TaskList {
             return true;
         }
         return false;
+    }
+
+    public ArrayList<Task> getList() {
+        return list;
     }
 }

@@ -1,0 +1,6 @@
+todo borrow book
+done 1
+deadline /by return book 
+done 2
+event /at project meeting 
+done 3
