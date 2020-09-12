@@ -1,5 +1,0 @@
-todo eat
-event sleep /at home
-done 2
-deadline work /by tmr
-done 3

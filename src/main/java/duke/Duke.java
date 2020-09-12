@@ -16,7 +16,7 @@ public class Duke {
         Message.start();
         while (!endDuke) {
             String command = in.nextLine();
-            endDuke = HandleInput.handlesInput(command);
+            endDuke = HandleInput.handlesInput(command,true);
         }
         Message.exit();
     }

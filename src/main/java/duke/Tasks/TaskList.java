@@ -4,6 +4,7 @@ import duke.Command.CommandType;
 import duke.Command.DukeException;
 import duke.GeneralMethods;
 import duke.Command.Message;
+
 import java.util.ArrayList;
 
 
@@ -11,29 +12,27 @@ public class TaskList {
     private static final int NUMBER_OF_PARTS = 2;
 
     private ArrayList<Task> list;
-    private static int numberOfTasks;
 
     public TaskList() {
         list = new ArrayList<>();
-        numberOfTasks = 0;
     }
 
-    public static int getNumberOfTasks() {
-        return numberOfTasks;
+    public int getNumberOfTasks() {
+        return list.size();
     }
 
     public void printTaskList() {
-        if (list.size() == 0) {
+        if (list.isEmpty()) {
             Message.printEmptyTasklist();
             return;
         }
         System.out.println("     Here are the tasks in your list:");
-        for (int i = 0; i < numberOfTasks; i++) {
+        for (int i = 0; i < list.size(); i++) {
             System.out.println("     " + (i + 1) + ". " + list.get(i).getStatusAndDescription());
         }
     }
 
-    public void markAsDone(String command) {
+    public void markAsDone(String command, boolean printMessage) {
         command = GeneralMethods.removeCommandFromInput(command, CommandType.done);
         //Error handling for input "done" without task number
         if (isTaskListEmptyOrIsCommandTypeInvalid(command)) {
@@ -44,34 +43,37 @@ public class TaskList {
         //Error handling for invalid task number
         try {
             list.get(index).markTaskAsDone();
-            Message.printTaskIsMarkedAsDone();
-            System.out.println("      " + list.get(index).getStatusAndDescription());
+            if (printMessage) {
+                Message.printTaskIsMarkedAsDone();
+                System.out.println("      " + list.get(index).getStatusAndDescription());
+            }
         } catch (NullPointerException | IndexOutOfBoundsException e) {
-            Message.printInvalidTaskNumber(numberOfTasks);
+            Message.printInvalidTaskNumber(list.size());
         }
     }
 
-    public void addTask(String description) {
+    public void addTask(String description, boolean printMessage) {
         description = GeneralMethods.removeCommandFromInput(description, CommandType.todo);
 
         try {
             if (description.isEmpty()) {
                 throw new DukeException();
             }
-            Message.printGotIt();
             list.add(new ToDo(description));
-            printStatusDescriptionAndNumberOftasks();
+            if (printMessage) {
+                Message.printGotIt();
+                printStatusDescriptionAndNumberOftasks();
+            }
         } catch (DukeException e) {
             Message.printEmptyTodoDescription();
         }
     }
 
-    public void addEvent(String description) {
+    public void addEvent(String description, boolean printMessage) {
         if (!description.contains("/at")) {
             Message.printMissingKeyword("/at");
             return;
         }
-        Message.printGotIt();
         description = GeneralMethods.removeCommandFromInput(description, CommandType.event);
         String[] eventInformation = description.split("/at", NUMBER_OF_PARTS);
         /* eventInformation[0] = description of event
@@ -82,15 +84,17 @@ public class TaskList {
             return;
         }
         list.add(new Event(eventInformation[0], eventInformation[1].strip()));
-        printStatusDescriptionAndNumberOftasks();
+        if (printMessage) {
+            Message.printGotIt();
+            printStatusDescriptionAndNumberOftasks();
+        }
     }
 
-    public void addDeadline(String description) {
+    public void addDeadline(String description, boolean printMessage) {
         if (!description.contains("/by")) {
             Message.printMissingKeyword("/by");
             return;
         }
-        Message.printGotIt();
         description = GeneralMethods.removeCommandFromInput(description, CommandType.deadline);
         String[] deadlineInformation = description.split("/by", NUMBER_OF_PARTS);
         /* deadlineInformation[0] = description of task
@@ -101,13 +105,15 @@ public class TaskList {
             return;
         }
         list.add(new Deadline(deadlineInformation[0], deadlineInformation[1].strip()));
-        printStatusDescriptionAndNumberOftasks();
+        if (printMessage) {
+            Message.printGotIt();
+            printStatusDescriptionAndNumberOftasks();
+        }
     }
 
     private void printStatusDescriptionAndNumberOftasks() {
-        System.out.println("       " + list.get(numberOfTasks).getStatusAndDescription());
-        numberOfTasks++;
-        Message.printNumberOfTasksInList(numberOfTasks);
+        System.out.println("       " + list.get(list.size()-1).getStatusAndDescription());
+        Message.printNumberOfTasksInList(list.size());
     }
 
     private boolean doNotHaveDescription(String[] input) {
@@ -123,24 +129,24 @@ public class TaskList {
         index--;
         //Error handling for invalid task number
         try {
-            if (index>= numberOfTasks || index < 0) {
+            if (index >= list.size() || index < 0) {
                 throw new DukeException();
             }
             Message.printTaskIsDeleted();
             System.out.println("      " + list.get(index).getStatusAndDescription());
             list.remove(index);
-            Message.printNumberOfTasksInList(--numberOfTasks);
+            Message.printNumberOfTasksInList(list.size());
         } catch (DukeException e) {
-            Message.printInvalidTaskNumber(numberOfTasks);
+            Message.printInvalidTaskNumber(list.size());
         }
     }
 
     private boolean isTaskListEmptyOrIsCommandTypeInvalid(String command) {
-        if (numberOfTasks == 0) {
+        if (list.isEmpty()) {
             Message.printEmptyTasklist();
             return true;
         } else if (command.isEmpty() || !GeneralMethods.isNumeric(command)) {
-            Message.printInvalidTaskNumber(numberOfTasks);
+            Message.printInvalidTaskNumber(list.size());
             return true;
         }
         return false;

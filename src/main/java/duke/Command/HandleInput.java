@@ -7,23 +7,25 @@ public class HandleInput {
 
     private static final TaskList list = new TaskList();
 
-    public static boolean handlesInput(String input) {
+    public static boolean handlesInput(String input, boolean printMessage) {
 
-        Message.printDashedLine();
+        if (printMessage) {
+            Message.printDashedLine();
+        }
         try {
             if (isCommand(input, "list")) {
                 list.printTaskList();
             } else if (isCommand(input, "done")) {
-                list.markAsDone(input);
+                list.markAsDone(input, printMessage);
             } else if (isCommand(input, "deadline")) {
-                list.addDeadline(input);
+                list.addDeadline(input, printMessage);
             } else if (isCommand(input, "event")) {
-                list.addEvent(input);
+                list.addEvent(input, printMessage);
             } else if (isCommand(input, "todo")) {
-                list.addTask(input);
+                list.addTask(input, printMessage);
             } else if (isCommand(input, "delete")) {
                 list.deleteTask(input);
-            } else if (isCommand(input, "bye")){
+            } else if (isCommand(input, "bye")) {
                 FileIO.writeToFile(list);
                 return true;
             } else {
@@ -32,7 +34,9 @@ public class HandleInput {
         } catch (DukeException e) {
             Message.printInvalidInput();
         }
-        Message.printDashedLine();
+        if (printMessage) {
+            Message.printDashedLine();
+        }
         return false;
 
     }

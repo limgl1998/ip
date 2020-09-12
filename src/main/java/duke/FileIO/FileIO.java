@@ -20,7 +20,7 @@ public class FileIO {
         try {
             Scanner s = new Scanner(data); // create a Scanner using the File as the source
             while (s.hasNext()) {
-                HandleInput.handlesInput(s.nextLine());
+                HandleInput.handlesInput(s.nextLine(),false);
             }
         } catch (FileNotFoundException e) {
             System.out.println("\u2639 OOPS!!! File does not exist. Please create a text file named \"data\" in the \"data\" folder.");
