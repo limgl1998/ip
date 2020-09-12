@@ -23,6 +23,10 @@ public class TaskList {
     }
 
     public void printTaskList() {
+        if (list.size() == 0) {
+            Message.printEmptyTasklist();
+            return;
+        }
         System.out.println("     Here are the tasks in your list:");
         for (int i = 0; i < numberOfTasks; i++) {
             System.out.println("     " + (i + 1) + ". " + list.get(i).getStatusAndDescription());
