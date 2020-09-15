@@ -52,7 +52,7 @@ public class Message {
         System.out.println("    \u2639 OOPS!!! Please input a task number between 1 and " + numberOfTasks + ".");
     }
 
-    public static void printEmptyTasklist() {
+    public static void printEmptyTaskList() {
         System.out.println("    \u2639 OOPS!!! List is empty");
     }
 

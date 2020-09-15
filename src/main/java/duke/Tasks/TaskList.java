@@ -23,7 +23,7 @@ public class TaskList {
 
     public void printTaskList() {
         if (list.isEmpty()) {
-            Message.printEmptyTasklist();
+            Message.printEmptyTaskList();
             return;
         }
         System.out.println("     Here are the tasks in your list:");
@@ -62,7 +62,7 @@ public class TaskList {
             list.add(new ToDo(description));
             if (printMessage) {
                 Message.printGotIt();
-                printStatusDescriptionAndNumberOftasks();
+                printStatusDescriptionAndNumberOfTasks();
             }
         } catch (DukeException e) {
             Message.printEmptyTodoDescription();
@@ -86,7 +86,7 @@ public class TaskList {
         list.add(new Event(eventInformation[0], eventInformation[1].strip()));
         if (printMessage) {
             Message.printGotIt();
-            printStatusDescriptionAndNumberOftasks();
+            printStatusDescriptionAndNumberOfTasks();
         }
     }
 
@@ -107,12 +107,12 @@ public class TaskList {
         list.add(new Deadline(deadlineInformation[0], deadlineInformation[1].strip()));
         if (printMessage) {
             Message.printGotIt();
-            printStatusDescriptionAndNumberOftasks();
+            printStatusDescriptionAndNumberOfTasks();
         }
     }
 
-    private void printStatusDescriptionAndNumberOftasks() {
-        System.out.println("       " + list.get(list.size()-1).getStatusAndDescription());
+    private void printStatusDescriptionAndNumberOfTasks() {
+        System.out.println("       " + list.get(list.size() - 1).getStatusAndDescription());
         Message.printNumberOfTasksInList(list.size());
     }
 
@@ -143,7 +143,7 @@ public class TaskList {
 
     private boolean isTaskListEmptyOrIsCommandTypeInvalid(String command) {
         if (list.isEmpty()) {
-            Message.printEmptyTasklist();
+            Message.printEmptyTaskList();
             return true;
         } else if (command.isEmpty() || !GeneralMethods.isNumeric(command)) {
             Message.printInvalidTaskNumber(list.size());

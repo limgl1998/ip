@@ -1,7 +1,5 @@
 package duke.Tasks;
 
-import duke.Tasks.Task;
-
 public class Event extends Task {
     protected String at;
 
@@ -19,8 +17,7 @@ public class Event extends Task {
         return "[E]" + super.getStatusAndDescription() + "(at: " + at + ")";
     }
 
-    @Override
-    public String getAdditionalInfomation() {
+    public String getAdditionalInformation() {
         return at;
     }
 }

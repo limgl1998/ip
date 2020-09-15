@@ -12,8 +12,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileIO {
+
+    public static final int INDEX_OF_TASK_TYPE = 1;
+
     public static void readFromFile() {
-        if (!doesFileExist()) {
+        if (doesFileNotExist()) {
             return;
         }
         File data = new File("data/data.txt");
@@ -27,7 +30,7 @@ public class FileIO {
         }
     }
 
-    private static boolean doesFileExist() {
+    private static boolean doesFileNotExist() {
         File folder = new File("data");
         if (!folder.exists()) {
             System.out.println("\u2639 OOPS!!! Folder does not exist. Creating a folder named \"data\" in the same directory...");
@@ -36,7 +39,7 @@ public class FileIO {
                 System.out.println("Folder is created successfully.");
             } else {
                 System.out.println("Please create a folder named \"data\" in the same directory manually.");
-                return false;
+                return true;
             }
         }
         File data = new File("data/data.txt");
@@ -50,14 +53,14 @@ public class FileIO {
                     System.out.println("Please create a text file named \"data\" in the \"data\" folder manually.");
                 }
             } catch (IOException e) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public static void writeToFile(TaskList taskList) {
-        if (!doesFileExist()) {
+        if (doesFileNotExist()) {
             return;
         }
         File data = new File("data/data.txt");
@@ -65,7 +68,7 @@ public class FileIO {
             FileWriter fw = new FileWriter(data.getAbsolutePath());
             ArrayList<Task> list = taskList.getList();
             for (int i = 0; i < taskList.getNumberOfTasks(); i++) {
-                String input = handleStatusAndDescription(list, i);
+                String input = formatListDataIntoStorageForm(list, i);
                 fw.write(input + "\n");
             }
             fw.close();
@@ -74,18 +77,18 @@ public class FileIO {
         }
     }
 
-    private static String handleStatusAndDescription(ArrayList<Task> list, int index) {
+    private static String formatListDataIntoStorageForm(ArrayList<Task> list, int index) {
         String output;
         String input = list.get(index).getStatusAndDescription();
-        switch (input.strip().toCharArray()[1]) {
+        switch (input.strip().toCharArray()[INDEX_OF_TASK_TYPE]) {
         case ('T'):
             output = "todo " + list.get(index).getDescription();
             break;
         case ('D'):
-            output = "deadline " + list.get(index).getDescription() + "/by " + list.get(index).getAdditionalInfomation();
+            output = "deadline " + list.get(index).getDescription() + "/by " + list.get(index).getAdditionalInformation();
             break;
         case ('E'):
-            output = "event " + list.get(index).getDescription() + "/at " + list.get(index).getAdditionalInfomation();
+            output = "event " + list.get(index).getDescription() + "/at " + list.get(index).getAdditionalInformation();
             break;
         default:
             return null;

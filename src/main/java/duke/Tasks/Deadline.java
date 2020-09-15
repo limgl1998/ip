@@ -1,7 +1,5 @@
 package duke.Tasks;
 
-import duke.Tasks.Task;
-
 public class Deadline extends Task {
     protected String by;
 
@@ -16,7 +14,7 @@ public class Deadline extends Task {
     }
 
     @Override
-    public String getAdditionalInfomation() {
+    public String getAdditionalInformation() {
         return by;
     }
 }

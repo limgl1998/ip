@@ -29,7 +29,7 @@ public class Task {
         return getStatusIcon() + description;
     }
 
-    public String getAdditionalInfomation() {
+    public String getAdditionalInformation() {
         return null;
     }
 }
