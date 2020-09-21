@@ -13,8 +13,11 @@ import java.util.Scanner;
 
 public class Storage {
 
-    public static final int INDEX_OF_TASK_TYPE = 1;
+    private static final int INDEX_OF_TASK_TYPE = 1;
 
+    /**
+     * Loads data from save file
+     */
     public void readFromFile() {
         if (doesFileNotExist()) {
             return;
@@ -30,6 +33,13 @@ public class Storage {
         }
     }
 
+    /**
+     * Checks if there the "data" file and "data" folder exists in the specified path
+     * If either does not exist, program will create a the missing objects respectively
+     * Returns true if file / folder does not exist and cannot be created
+     *
+     * @return file exist or not
+     */
     private boolean doesFileNotExist() {
         File folder = new File("data");
         if (!folder.exists()) {
@@ -58,6 +68,12 @@ public class Storage {
         }
         return false;
     }
+
+    /**
+     * Writes data from the tasklist into the save file
+     *
+     * @param taskList
+     */
 
     public void writeToFile(TaskList taskList) {
         if (doesFileNotExist()) {

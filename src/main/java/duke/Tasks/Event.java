@@ -1,5 +1,10 @@
 package duke.Tasks;
 
+/**
+ * Represents an Event task
+ * It has a description, done status and an event at
+ */
+
 public class Event extends Task {
     protected String at;
 

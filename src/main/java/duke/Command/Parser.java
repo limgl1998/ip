@@ -9,6 +9,13 @@ public class Parser {
     private static final Ui ui = new Ui();
     private static final Storage storage = new Storage();
 
+    /**
+     * Takes in the user's input and carry out the instructions if possible
+     *
+     * @param input
+     * @param printMessage
+     * @return
+     */
     public static boolean handlesInput(String input, boolean printMessage) {
 
         if (printMessage) {
@@ -42,6 +49,13 @@ public class Parser {
         return false;
     }
 
+    /**
+     * Takes in the user's input and compares with a set of given commands
+     *
+     * @param input
+     * @param command
+     * @return true if input contains one of specified command else false
+     */
     private static boolean isCommand(String input, String command) {
         if (input.strip().toLowerCase().contains("list")) {
             return input.strip().equalsIgnoreCase("list");

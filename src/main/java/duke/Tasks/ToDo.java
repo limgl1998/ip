@@ -1,5 +1,10 @@
 package duke.Tasks;
 
+/**
+ * Represents a todo task
+ * It has a description and done status
+ */
+
 public class ToDo extends Task {
 
     public ToDo(String description) {
