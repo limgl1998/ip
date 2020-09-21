@@ -7,23 +7,41 @@ import duke.FileIO.Storage;
 import java.util.Scanner;
 
 public class Duke {
+    private Ui ui;
+    private Scanner in;
+    private Storage storage;
 
-    public static void main(String[] args) {
-        run();
+    public Duke() {
+        ui = new Ui();
+        in = new Scanner(System.in);
+        storage = new Storage();
     }
 
-    public static void run() {
-        Scanner in = new Scanner(System.in);
+    public void runUntilByeCommand() {
         boolean endDuke = false;
-        Storage storage = new Storage();
-        Ui ui = new Ui();
 
         storage.readFromFile();
-        ui.start();
         while (!endDuke) {
             String command = in.nextLine();
             endDuke = Parser.handlesInput(command, true);
         }
+    }
+
+    private void start() {
+        ui.start();
+    }
+
+    private void end() {
         ui.exit();
+    }
+
+    public void run() {
+        start();
+        runUntilByeCommand();
+        end();
+    }
+
+    public static void main(String[] args) {
+        new Duke().run();
     }
 }
