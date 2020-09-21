@@ -32,7 +32,7 @@ public abstract class Task {
         this.isDone = true;
     }
 
-    private String getStatusIcon() {
+    public String getStatusIcon() {
         return ("[" + (isDone ? TICK_ICON : CROSS_ICON) + "] ");
     }
 

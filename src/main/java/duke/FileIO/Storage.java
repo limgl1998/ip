@@ -39,7 +39,7 @@ public class Storage {
      * If either does not exist, program will create a the missing objects respectively
      * Returns true if file / folder does not exist and cannot be created
      *
-     * @return file exist or not
+     * @return whether file exist or not
      */
     private boolean doesFileNotExist() {
         File folder = new File("data");
@@ -71,7 +71,7 @@ public class Storage {
     }
 
     /**
-     * Writes data from the tasklist into the save file
+     * Writes data from the task list into the save file
      *
      * @param taskList
      */

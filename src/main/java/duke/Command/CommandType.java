@@ -7,5 +7,5 @@ package duke.Command;
  */
 
 public enum CommandType {
-    TODO, EVENT, DEADLINE, DONE, DELETE, FIND, LIST, BYE
+    TODO, EVENT, DEADLINE, DONE, DELETE, FIND, LIST, BYE, HELP
 }

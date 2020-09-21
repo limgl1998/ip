@@ -7,9 +7,9 @@ public class GeneralMethods {
     /**
      * Returns input with the given command removed
      *
-     * @param input
-     * @param command
-     * @return
+     * @param input user input
+     * @param command one of the defined commands
+     * @return user input without command keyword
      */
 
     public static String removeCommandFromInput(String input, CommandType command) {
@@ -23,8 +23,8 @@ public class GeneralMethods {
     /**
      * Checks if the input command is a number
      *
-     * @param command
-     * @return
+     * @param command user input
+     * @return whether user input does not contains non numeric
      */
     public static boolean isNumeric(String command) {
         if (command.isEmpty()) {

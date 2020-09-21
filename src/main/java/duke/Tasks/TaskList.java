@@ -8,7 +8,7 @@ import duke.Command.Ui;
 import java.util.ArrayList;
 
 /**
- * Tasklist holds the main arraylist (list) that contains all the information stored
+ * Task list holds the main arraylist (list) that contains all the information stored
  * It all the functions to modify the list are found here
  */
 
