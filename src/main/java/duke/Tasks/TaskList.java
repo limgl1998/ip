@@ -7,6 +7,10 @@ import duke.Command.Ui;
 
 import java.util.ArrayList;
 
+/**
+ * Tasklist holds the main arraylist (list) that contains all the information stored
+ * It all the functions to modify the list are found here
+ */
 
 public class TaskList {
     private static final int NUMBER_OF_PARTS = 2;
@@ -22,6 +26,9 @@ public class TaskList {
         return list.size();
     }
 
+    /**
+     * Prints the contents of the list - task, done status and description
+     */
     public void printTaskList() {
         if (list.isEmpty()) {
             ui.printEmptyTaskList();
@@ -33,6 +40,14 @@ public class TaskList {
         }
     }
 
+    /**
+     * Changes the done status of the task to done
+     * Prints a done message when it takes in user input
+     * Does not print done message when used to load data from save file
+     *
+     * @param command
+     * @param printMessage
+     */
     public void markAsDone(String command, boolean printMessage) {
         command = GeneralMethods.removeCommandFromInput(command, CommandType.done);
         //Error handling for input "done" without task number
@@ -53,6 +68,15 @@ public class TaskList {
         }
     }
 
+    /**
+     * Adds a task to the list
+     * Prints a done message when it takes in user input
+     * Does not print done message when used to load data from save file
+     *
+     * @param description
+     * @param printMessage
+     */
+
     public void addTask(String description, boolean printMessage) {
         description = GeneralMethods.removeCommandFromInput(description, CommandType.todo);
 
@@ -70,6 +94,14 @@ public class TaskList {
         }
     }
 
+    /**
+     * Adds an Event to the list
+     * Prints a done message when it takes in user input
+     * Does not print done message when used to load data from save file
+     *
+     * @param description
+     * @param printMessage
+     */
     public void addEvent(String description, boolean printMessage) {
         if (!description.contains("/at")) {
             ui.printMissingKeyword("/at");
@@ -91,6 +123,14 @@ public class TaskList {
         }
     }
 
+    /**
+     * Adds a Deadline to the list
+     * Prints a done message when it takes in user input
+     * Does not print done message when used to load data from save file
+     *
+     * @param description
+     * @param printMessage
+     */
     public void addDeadline(String description, boolean printMessage) {
         if (!description.contains("/by")) {
             ui.printMissingKeyword("/by");
@@ -112,6 +152,10 @@ public class TaskList {
         }
     }
 
+    /**
+     * Prints the number of tasks in the list
+     * Also prints the description of tasks in list
+     */
     private void printStatusDescriptionAndNumberOfTasks() {
         System.out.println("       " + list.get(list.size() - 1).getStatusAndDescription());
         ui.printNumberOfTasksInList(list.size());
@@ -121,6 +165,11 @@ public class TaskList {
         return input.length != NUMBER_OF_PARTS;
     }
 
+    /**
+     * Deletes a task from the list
+     *
+     * @param command
+     */
     public void deleteTask(String command) {
         command = GeneralMethods.removeCommandFromInput(command, CommandType.delete);
         if (isTaskListEmptyOrIsCommandTypeInvalid(command)) {

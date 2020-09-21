@@ -1,6 +1,11 @@
 package duke.Tasks;
 
-public class Task {
+/**
+ * Represents a Task
+ * It has a description and done status
+ */
+
+public abstract class Task {
     protected String description;
     protected Boolean isDone;
 
