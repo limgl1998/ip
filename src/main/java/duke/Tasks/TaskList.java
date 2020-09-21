@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 public class TaskList {
     private static final int NUMBER_OF_PARTS = 2;
+    private static final String EVENT_KEYWORD = "/at";
+    private static final String DEADLINE_KEYWORD = "/by";
     private final ArrayList<Task> list;
     private final Ui ui;
 
@@ -34,7 +36,7 @@ public class TaskList {
             ui.printEmptyTaskList();
             return;
         }
-        System.out.println("     Here are the tasks in your list:");
+        ui.printHereAreYourTasks();
         for (int i = 0; i < list.size(); i++) {
             System.out.println("     " + (i + 1) + ". " + list.get(i).getStatusAndDescription());
         }
@@ -49,7 +51,7 @@ public class TaskList {
      * @param printMessage
      */
     public void markAsDone(String command, boolean printMessage) {
-        command = GeneralMethods.removeCommandFromInput(command, CommandType.done);
+        command = GeneralMethods.removeCommandFromInput(command, CommandType.DONE);
         //Error handling for input "done" without task number
         if (isTaskListEmptyOrIsCommandTypeInvalid(command)) {
             return;
@@ -78,7 +80,7 @@ public class TaskList {
      */
 
     public void addTask(String description, boolean printMessage) {
-        description = GeneralMethods.removeCommandFromInput(description, CommandType.todo);
+        description = GeneralMethods.removeCommandFromInput(description, CommandType.TODO);
 
         try {
             if (description.isEmpty()) {
@@ -103,12 +105,12 @@ public class TaskList {
      * @param printMessage
      */
     public void addEvent(String description, boolean printMessage) {
-        if (!description.contains("/at")) {
-            ui.printMissingKeyword("/at");
+        if (!description.contains(EVENT_KEYWORD)) {
+            ui.printMissingKeyword(EVENT_KEYWORD);
             return;
         }
-        description = GeneralMethods.removeCommandFromInput(description, CommandType.event);
-        String[] eventInformation = description.split("/at", NUMBER_OF_PARTS);
+        description = GeneralMethods.removeCommandFromInput(description, CommandType.EVENT);
+        String[] eventInformation = description.split(EVENT_KEYWORD, NUMBER_OF_PARTS);
         /* eventInformation[0] = description of event
          * eventInformation[1] = event date
          */
@@ -132,12 +134,12 @@ public class TaskList {
      * @param printMessage
      */
     public void addDeadline(String description, boolean printMessage) {
-        if (!description.contains("/by")) {
-            ui.printMissingKeyword("/by");
+        if (!description.contains(DEADLINE_KEYWORD)) {
+            ui.printMissingKeyword(DEADLINE_KEYWORD);
             return;
         }
-        description = GeneralMethods.removeCommandFromInput(description, CommandType.deadline);
-        String[] deadlineInformation = description.split("/by", NUMBER_OF_PARTS);
+        description = GeneralMethods.removeCommandFromInput(description, CommandType.DEADLINE);
+        String[] deadlineInformation = description.split(DEADLINE_KEYWORD, NUMBER_OF_PARTS);
         /* deadlineInformation[0] = description of task
          * deadlineInformation[1] = deadline date
          */
@@ -171,7 +173,7 @@ public class TaskList {
      * @param command
      */
     public void deleteTask(String command) {
-        command = GeneralMethods.removeCommandFromInput(command, CommandType.delete);
+        command = GeneralMethods.removeCommandFromInput(command, CommandType.DELETE);
         if (isTaskListEmptyOrIsCommandTypeInvalid(command)) {
             return;
         }
@@ -206,8 +208,15 @@ public class TaskList {
         return list;
     }
 
+    /**
+     * Looks for the given command in the descriptions and additional information of tasks in list
+     * Prints out the description and additional information if found
+     *
+     * @param command
+     */
+
     public void find(String command) {
-        command = GeneralMethods.removeCommandFromInput(command, CommandType.find).toLowerCase();
+        command = GeneralMethods.removeCommandFromInput(command, CommandType.FIND).toLowerCase();
         int i = 0;
         if (list.isEmpty()) {
             ui.printEmptyTaskList();
@@ -221,14 +230,14 @@ public class TaskList {
             if (t.description.toLowerCase().contains(command)
                     || t.getAdditionalInformation().toLowerCase().contains(command)) {
                 if (i == 0) {
-                    System.out.println("     Here are the matching tasks in your list:");
+                    ui.printMatchingTasksFound();
                 }
                 System.out.println("     " + (i + 1) + ". " + t.getStatusAndDescription());
                 i++;
             }
         }
         if (i == 0) {
-            System.out.println("    \u2639 OOPS!!! No matching tasks are found");
+            ui.printMatchingTasksNotFound();
         }
         ui.printDashedLine();
     }

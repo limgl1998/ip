@@ -11,10 +11,11 @@ public class Parser {
 
     /**
      * Takes in the user's input and carry out the instructions if possible
+     * Returns if user input is bye
      *
-     * @param input
+     * @param input user input
      * @param printMessage
-     * @return
+     * @return is input BYE
      */
     public static boolean handlesInput(String input, boolean printMessage) {
 
@@ -22,21 +23,21 @@ public class Parser {
             ui.printDashedLine();
         }
         try {
-            if (isCommand(input, "list")) {
+            if (isCommand(input, CommandType.LIST)) {
                 list.printTaskList();
-            } else if (isCommand(input, "done")) {
+            } else if (isCommand(input, CommandType.DONE)) {
                 list.markAsDone(input, printMessage);
-            } else if (isCommand(input, "deadline")) {
+            } else if (isCommand(input, CommandType.DEADLINE)) {
                 list.addDeadline(input, printMessage);
-            } else if (isCommand(input, "event")) {
+            } else if (isCommand(input, CommandType.EVENT)) {
                 list.addEvent(input, printMessage);
-            } else if (isCommand(input, "todo")) {
+            } else if (isCommand(input, CommandType.TODO)) {
                 list.addTask(input, printMessage);
-            } else if (isCommand(input, "delete")) {
+            } else if (isCommand(input, CommandType.DELETE)) {
                 list.deleteTask(input);
-            } else if (isCommand(input, "find")) {
+            } else if (isCommand(input, CommandType.FIND)) {
                 list.find(input);
-            }else if (isCommand(input, "bye")) {
+            }else if (isCommand(input, CommandType.BYE)) {
                 storage.writeToFile(list);
                 return true;
             } else {
@@ -55,10 +56,11 @@ public class Parser {
      * Takes in the user's input and compares with a set of given commands
      *
      * @param input
-     * @param command
+     * @param type one of the defined commands
      * @return true if input contains one of specified command else false
      */
-    private static boolean isCommand(String input, String command) {
+    private static boolean isCommand(String input, CommandType type) {
+        String command = type.toString().toLowerCase();
         if (input.strip().toLowerCase().contains("list")) {
             return input.strip().equalsIgnoreCase("list");
         } else {

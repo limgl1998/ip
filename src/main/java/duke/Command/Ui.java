@@ -1,7 +1,12 @@
 package duke.Command;
 
 public class Ui {
-    public void start() {
+    public static final String SAD_SMILEY = "\u2639";
+
+    /**
+     * Print start message
+     */
+    public void printStart() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -14,7 +19,10 @@ public class Ui {
         printDashedLine();
     }
 
-    public void exit() {
+    /**
+     * Print exit message
+     */
+    public void printExit() {
         System.out.println("    Bye. Hope to see you again soon!");
         printDashedLine();
     }
@@ -27,37 +35,46 @@ public class Ui {
         System.out.println("     Got it. I've added this task:");
     }
 
+    /**
+     * Prints number of tasks in the list
+     * @param numberOfTasks number of tasks in the list
+     */
     public void printNumberOfTasksInList(int numberOfTasks) {
         boolean isMoreThanOne = (numberOfTasks > 1);
         System.out.println("     Now you have " + numberOfTasks + " task" + (isMoreThanOne ? "s" : "") + " in the list.");
     }
 
     public void printInvalidInput() {
-        System.out.println("    \u2639 OOPS!!! I'm sorry, but I don't know what that means :-(");
+        System.out.println("    " + SAD_SMILEY + " OOPS!!! I'm sorry, but I don't know what that means :-(");
     }
 
     public void printEmptyTodoDescription() {
-        System.out.println("    \u2639 OOPS!!! The description of a todo cannot be empty.");
+        System.out.println("    " + SAD_SMILEY + " OOPS!!! The description of a todo cannot be empty.");
     }
 
     public void printEmptyEventDescription() {
-        System.out.println("    \u2639 OOPS!!! The description of an event cannot be empty.");
+        System.out.println("    " + SAD_SMILEY + " OOPS!!! The description of an event cannot be empty.");
     }
 
     public void printEmptyDeadlineDescription() {
-        System.out.println("    \u2639 OOPS!!! The description of a deadline cannot be empty.");
+        System.out.println("    " + SAD_SMILEY + " OOPS!!! The description of a deadline cannot be empty.");
     }
 
+    /**
+     * Tells user input is invalid and suggests range of valid inputs
+     *
+     * @param numberOfTasks total number of tasks in the list
+     */
     public void printInvalidTaskNumber(int numberOfTasks) {
-        System.out.println("    \u2639 OOPS!!! Please input a task number between 1 and " + numberOfTasks + ".");
+        System.out.println("    " + SAD_SMILEY + " OOPS!!! Please input a task number between 1 and " + numberOfTasks + ".");
     }
 
     public void printEmptyTaskList() {
-        System.out.println("    \u2639 OOPS!!! List is empty");
+        System.out.println("    " + SAD_SMILEY + " OOPS!!! List is empty");
     }
 
     public void printMissingKeyword(String keyword) {
-        System.out.println("    \u2639 OOPS!!! Please include the keyword " + keyword + " .");
+        System.out.println("    " + SAD_SMILEY + " OOPS!!! Please include the keyword " + keyword + " .");
     }
 
     public void printTaskIsDeleted() {
@@ -69,6 +86,48 @@ public class Ui {
     }
 
     public void printEmptyFindDescription() {
-        System.out.println("    \u2639 OOPS!!! The description of find cannot be empty.");
+        System.out.println("    " + SAD_SMILEY + " OOPS!!! The description of find cannot be empty.");
+    }
+
+    public void printFolderNotFound() {
+        System.out.println(SAD_SMILEY + " OOPS!!! Folder does not exist. Creating a folder named \"data\" in the same directory...");
+    }
+
+    public void printFolderCreationSuccess() {
+        System.out.println("Folder is created successfully.");
+    }
+
+    public void printFolderCreationFailure() {
+        System.out.println(SAD_SMILEY + " OOPS!!! Folder creation failed");
+        System.out.println("Please create a folder named \"data\" in the same directory manually.");
+    }
+
+    public void printFileNotFound() {
+        System.out.println(SAD_SMILEY + " OOPS!!! File does not exist. Creating a text file named \"data\" in the \"data\" folder...");
+    }
+
+    public void printFileCreationSuccess() {
+        System.out.println("File is created successfully.");
+    }
+
+    public void printFileCreationFailure() {
+        System.out.println(SAD_SMILEY + " OOPS!!! File creation failed");
+        System.out.println("Please create a text file named \"data\" in the \"data\" folder manually.");
+    }
+
+    public void printSomethingWentWrong() {
+        System.out.println(SAD_SMILEY + " OOPS!!! something went wrong");
+    }
+
+    public void printMatchingTasksNotFound() {
+        System.out.println(SAD_SMILEY + " OOPS!!! No matching tasks are found");
+    }
+
+    public void printMatchingTasksFound() {
+        System.out.println("     Here are the matching tasks in your list:");
+    }
+
+    public void printHereAreYourTasks() {
+        System.out.println("     Here are the tasks in your list:");
     }
 }

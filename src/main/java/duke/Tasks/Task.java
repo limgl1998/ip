@@ -6,6 +6,8 @@ package duke.Tasks;
  */
 
 public abstract class Task {
+    protected static final String TICK_ICON = "\u2713";
+    protected static final String CROSS_ICON = "\u2718";
     protected String description;
     protected Boolean isDone;
 
@@ -18,6 +20,10 @@ public abstract class Task {
         this.isDone = false;
     }
 
+    /**
+     * Returns description of task
+     * @return description
+     */
     public String getDescription() {
         return description;
     }
@@ -27,13 +33,22 @@ public abstract class Task {
     }
 
     private String getStatusIcon() {
-        return ("[" + (isDone ? "\u2713" : "\u2718") + "] "); //return tick or X symbols
+        return ("[" + (isDone ? TICK_ICON : CROSS_ICON) + "] ");
     }
 
+    /**
+     * Returns current status icon and description of task
+     * Tick for done and cross for not done
+     * @return status icon and description
+     */
     public String getStatusAndDescription() {
         return getStatusIcon() + description;
     }
 
+    /**
+     * Returns any other relevant information
+     * @return empty string by default
+     */
     public String getAdditionalInformation() {
         return "";
     }

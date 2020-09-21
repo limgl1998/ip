@@ -28,11 +28,11 @@ public class Duke {
     }
 
     private void start() {
-        ui.start();
+        ui.printStart();
     }
 
     private void end() {
-        ui.exit();
+        ui.printExit();
     }
 
     public void run() {

@@ -17,11 +17,19 @@ public class Event extends Task {
         return at;
     }
 
+    /**
+     * Returns current status, description and event location (at) of Event task
+     * @return current status, description and at
+     */
     @Override
     public String getStatusAndDescription() {
         return "[E]" + super.getStatusAndDescription() + "(at: " + at + ")";
     }
 
+    /**
+     * Returns event location (at)
+     * @return at
+     */
     public String getAdditionalInformation() {
         return at;
     }

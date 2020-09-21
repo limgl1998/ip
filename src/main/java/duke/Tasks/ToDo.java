@@ -11,6 +11,10 @@ public class ToDo extends Task {
         super(description);
     }
 
+    /**
+     * Returns current status and description of task
+     * @return status and description
+     */
     @Override
     public String getStatusAndDescription() {
         return "[T]" + super.getStatusAndDescription();

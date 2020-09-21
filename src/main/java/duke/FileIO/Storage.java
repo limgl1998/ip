@@ -1,6 +1,7 @@
 package duke.FileIO;
 
 import duke.Command.Parser;
+import duke.Command.Ui;
 import duke.Tasks.Task;
 import duke.Tasks.TaskList;
 
@@ -14,7 +15,7 @@ import java.util.Scanner;
 public class Storage {
 
     private static final int INDEX_OF_TASK_TYPE = 1;
-
+    private Ui ui = new Ui();
     /**
      * Loads data from save file
      */
@@ -29,7 +30,7 @@ public class Storage {
                 Parser.handlesInput(s.nextLine(), false);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("\u2639 OOPS!!! File does not exist. Please create a text file named \"data\" in the \"data\" folder.");
+            ui.printSomethingWentWrong();
         }
     }
 
@@ -43,24 +44,24 @@ public class Storage {
     private boolean doesFileNotExist() {
         File folder = new File("data");
         if (!folder.exists()) {
-            System.out.println("\u2639 OOPS!!! Folder does not exist. Creating a folder named \"data\" in the same directory...");
+            ui.printFolderNotFound();
             boolean isFolderCreatedSuccessfully = folder.mkdir();
             if (isFolderCreatedSuccessfully) {
-                System.out.println("Folder is created successfully.");
+                ui.printFolderCreationSuccess();
             } else {
-                System.out.println("Please create a folder named \"data\" in the same directory manually.");
+                ui.printFolderCreationFailure();
                 return true;
             }
         }
         File data = new File("data/data.txt");
         if (!data.exists()) {
-            System.out.println("\u2639 OOPS!!! File does not exist. Creating a text file named \"data\" in the \"data\" folder...");
+            ui.printFileNotFound();
             try {
                 FileWriter fw = new FileWriter(data.getAbsolutePath());
                 if (data.exists()) {
-                    System.out.println("File is created successfully.");
+                    ui.printFileCreationSuccess();
                 } else {
-                    System.out.println("Please create a text file named \"data\" in the \"data\" folder manually.");
+                    ui.printFileCreationFailure();
                 }
             } catch (IOException e) {
                 return true;
@@ -89,7 +90,7 @@ public class Storage {
             }
             fw.close();
         } catch (IOException e) {
-            System.out.println("OOPS!!! something went wrong"); //remember to change this
+            ui.printSomethingWentWrong();
         }
     }
 
@@ -101,10 +102,12 @@ public class Storage {
             output = "todo " + list.get(index).getDescription();
             break;
         case ('D'):
-            output = "deadline " + list.get(index).getDescription() + "/by " + list.get(index).getAdditionalInformation();
+            output = "deadline " + list.get(index).getDescription()
+                    + "/by " + list.get(index).getAdditionalInformation();
             break;
         case ('E'):
-            output = "event " + list.get(index).getDescription() + "/at " + list.get(index).getAdditionalInformation();
+            output = "event " + list.get(index).getDescription()
+                    + "/at " + list.get(index).getAdditionalInformation();
             break;
         default:
             return null;
