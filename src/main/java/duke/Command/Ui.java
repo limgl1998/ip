@@ -1,6 +1,6 @@
 package duke.Command;
 
-public class Message {
+public class Ui {
     public static void start() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"

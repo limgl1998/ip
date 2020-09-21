@@ -1,16 +1,16 @@
 package duke.Command;
 
-import duke.FileIO.FileIO;
+import duke.FileIO.Storage;
 import duke.Tasks.TaskList;
 
-public class HandleInput {
+public class Parser {
 
     private static final TaskList list = new TaskList();
 
     public static boolean handlesInput(String input, boolean printMessage) {
 
         if (printMessage) {
-            Message.printDashedLine();
+            Ui.printDashedLine();
         }
         try {
             if (isCommand(input, "list")) {
@@ -26,16 +26,16 @@ public class HandleInput {
             } else if (isCommand(input, "delete")) {
                 list.deleteTask(input);
             } else if (isCommand(input, "bye")) {
-                FileIO.writeToFile(list);
+                Storage.writeToFile(list);
                 return true;
             } else {
                 throw new DukeException();
             }
         } catch (DukeException e) {
-            Message.printInvalidInput();
+            Ui.printInvalidInput();
         }
         if (printMessage) {
-            Message.printDashedLine();
+            Ui.printDashedLine();
         }
         return false;
 

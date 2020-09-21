@@ -1,6 +1,6 @@
 package duke.FileIO;
 
-import duke.Command.HandleInput;
+import duke.Command.Parser;
 import duke.Tasks.Task;
 import duke.Tasks.TaskList;
 
@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class FileIO {
+public class Storage {
 
     public static final int INDEX_OF_TASK_TYPE = 1;
 
@@ -23,7 +23,7 @@ public class FileIO {
         try {
             Scanner s = new Scanner(data); // create a Scanner using the File as the source
             while (s.hasNext()) {
-                HandleInput.handlesInput(s.nextLine(),false);
+                Parser.handlesInput(s.nextLine(),false);
             }
         } catch (FileNotFoundException e) {
             System.out.println("\u2639 OOPS!!! File does not exist. Please create a text file named \"data\" in the \"data\" folder.");

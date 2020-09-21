@@ -1,8 +1,8 @@
 package duke;
 
-import duke.Command.HandleInput;
-import duke.Command.Message;
-import duke.FileIO.FileIO;
+import duke.Command.Parser;
+import duke.Command.Ui;
+import duke.FileIO.Storage;
 
 import java.util.Scanner;
 
@@ -12,12 +12,12 @@ public class Duke {
         Scanner in = new Scanner(System.in);
         boolean endDuke = false;
 
-        FileIO.readFromFile();
-        Message.start();
+        Storage.readFromFile();
+        Ui.start();
         while (!endDuke) {
             String command = in.nextLine();
-            endDuke = HandleInput.handlesInput(command,true);
+            endDuke = Parser.handlesInput(command,true);
         }
-        Message.exit();
+        Ui.exit();
     }
 }
