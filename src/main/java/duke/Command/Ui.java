@@ -67,4 +67,8 @@ public class Ui {
     public void printTaskIsMarkedAsDone() {
         System.out.println("     Nice! I've marked this task as done!");
     }
+
+    public void printEmptyFindDescription() {
+        System.out.println("    \u2639 OOPS!!! The description of find cannot be empty.");
+    }
 }

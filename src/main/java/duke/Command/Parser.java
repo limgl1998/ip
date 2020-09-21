@@ -34,7 +34,9 @@ public class Parser {
                 list.addTask(input, printMessage);
             } else if (isCommand(input, "delete")) {
                 list.deleteTask(input);
-            } else if (isCommand(input, "bye")) {
+            } else if (isCommand(input, "find")) {
+                list.find(input);
+            }else if (isCommand(input, "bye")) {
                 storage.writeToFile(list);
                 return true;
             } else {

@@ -15,10 +15,11 @@ import java.util.ArrayList;
 public class TaskList {
     private static final int NUMBER_OF_PARTS = 2;
     private final ArrayList<Task> list;
-    private final Ui ui = new Ui();
+    private final Ui ui;
 
     public TaskList() {
         list = new ArrayList<>();
+        ui = new Ui();
     }
 
     public int getNumberOfTasks() {
@@ -203,5 +204,32 @@ public class TaskList {
 
     public ArrayList<Task> getList() {
         return list;
+    }
+
+    public void find(String command) {
+        command = GeneralMethods.removeCommandFromInput(command, CommandType.find).toLowerCase();
+        int i = 0;
+        if (list.isEmpty()) {
+            ui.printEmptyTaskList();
+            return;
+        } else if (command.isEmpty()) {
+            ui.printEmptyFindDescription();
+            return;
+        }
+        ui.printDashedLine();
+        for (Task t : list) {
+            if (t.description.toLowerCase().contains(command)
+                    || t.getAdditionalInformation().toLowerCase().contains(command)) {
+                if (i == 0) {
+                    System.out.println("     Here are the matching tasks in your list:");
+                }
+                System.out.println("     " + (i + 1) + ". " + t.getStatusAndDescription());
+                i++;
+            }
+        }
+        if (i == 0) {
+            System.out.println("    \u2639 OOPS!!! No matching tasks are found");
+        }
+        ui.printDashedLine();
     }
 }

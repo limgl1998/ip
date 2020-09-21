@@ -35,6 +35,6 @@ public abstract class Task {
     }
 
     public String getAdditionalInformation() {
-        return null;
+        return "";
     }
 }
