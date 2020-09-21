@@ -23,7 +23,7 @@ public class Storage {
         try {
             Scanner s = new Scanner(data); // create a Scanner using the File as the source
             while (s.hasNext()) {
-                Parser.handlesInput(s.nextLine(),false);
+                Parser.handlesInput(s.nextLine(), false);
             }
         } catch (FileNotFoundException e) {
             System.out.println("\u2639 OOPS!!! File does not exist. Please create a text file named \"data\" in the \"data\" folder.");

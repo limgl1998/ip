@@ -1,7 +1,7 @@
 package duke.Command;
 
 public class Ui {
-    public static void start() {
+    public void start() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -14,57 +14,57 @@ public class Ui {
         printDashedLine();
     }
 
-    public static void exit() {
+    public void exit() {
         System.out.println("    Bye. Hope to see you again soon!");
         printDashedLine();
     }
 
-    public static void printDashedLine() {
+    public void printDashedLine() {
         System.out.println("    ____________________________________________________________");
     }
 
-    public static void printGotIt() {
+    public void printGotIt() {
         System.out.println("     Got it. I've added this task:");
     }
 
-    public static void printNumberOfTasksInList(int numberOfTasks) {
+    public void printNumberOfTasksInList(int numberOfTasks) {
         boolean isMoreThanOne = (numberOfTasks > 1);
         System.out.println("     Now you have " + numberOfTasks + " task" + (isMoreThanOne ? "s" : "") + " in the list.");
     }
 
-    public static void printInvalidInput() {
+    public void printInvalidInput() {
         System.out.println("    \u2639 OOPS!!! I'm sorry, but I don't know what that means :-(");
     }
 
-    public static void printEmptyTodoDescription() {
+    public void printEmptyTodoDescription() {
         System.out.println("    \u2639 OOPS!!! The description of a todo cannot be empty.");
     }
 
-    public static void printEmptyEventDescription() {
+    public void printEmptyEventDescription() {
         System.out.println("    \u2639 OOPS!!! The description of an event cannot be empty.");
     }
 
-    public static void printEmptyDeadlineDescription() {
+    public void printEmptyDeadlineDescription() {
         System.out.println("    \u2639 OOPS!!! The description of a deadline cannot be empty.");
     }
 
-    public static void printInvalidTaskNumber(int numberOfTasks) {
+    public void printInvalidTaskNumber(int numberOfTasks) {
         System.out.println("    \u2639 OOPS!!! Please input a task number between 1 and " + numberOfTasks + ".");
     }
 
-    public static void printEmptyTaskList() {
+    public void printEmptyTaskList() {
         System.out.println("    \u2639 OOPS!!! List is empty");
     }
 
-    public static void printMissingKeyword(String keyword) {
+    public void printMissingKeyword(String keyword) {
         System.out.println("    \u2639 OOPS!!! Please include the keyword " + keyword + " .");
     }
 
-    public static void printTaskIsDeleted() {
+    public void printTaskIsDeleted() {
         System.out.println("     Noted. I've removed this task:");
     }
 
-    public static void printTaskIsMarkedAsDone() {
+    public void printTaskIsMarkedAsDone() {
         System.out.println("     Nice! I've marked this task as done!");
     }
 }

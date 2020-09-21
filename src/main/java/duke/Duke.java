@@ -9,15 +9,21 @@ import java.util.Scanner;
 public class Duke {
 
     public static void main(String[] args) {
+        run();
+    }
+
+    public static void run() {
         Scanner in = new Scanner(System.in);
         boolean endDuke = false;
 
+        Ui ui = new Ui();
+
         Storage.readFromFile();
-        Ui.start();
+        ui.start();
         while (!endDuke) {
             String command = in.nextLine();
-            endDuke = Parser.handlesInput(command,true);
+            endDuke = Parser.handlesInput(command, true);
         }
-        Ui.exit();
+        ui.exit();
     }
 }

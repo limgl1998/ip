@@ -6,11 +6,12 @@ import duke.Tasks.TaskList;
 public class Parser {
 
     private static final TaskList list = new TaskList();
+    private static final Ui ui = new Ui();
 
     public static boolean handlesInput(String input, boolean printMessage) {
 
         if (printMessage) {
-            Ui.printDashedLine();
+            ui.printDashedLine();
         }
         try {
             if (isCommand(input, "list")) {
@@ -32,13 +33,12 @@ public class Parser {
                 throw new DukeException();
             }
         } catch (DukeException e) {
-            Ui.printInvalidInput();
+            ui.printInvalidInput();
         }
         if (printMessage) {
-            Ui.printDashedLine();
+            ui.printDashedLine();
         }
         return false;
-
     }
 
     private static boolean isCommand(String input, String command) {

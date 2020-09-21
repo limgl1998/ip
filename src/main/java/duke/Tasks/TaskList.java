@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public class TaskList {
     private static final int NUMBER_OF_PARTS = 2;
-
-    private ArrayList<Task> list;
+    private final ArrayList<Task> list;
+    private final Ui ui = new Ui();
 
     public TaskList() {
         list = new ArrayList<>();
@@ -23,7 +23,7 @@ public class TaskList {
 
     public void printTaskList() {
         if (list.isEmpty()) {
-            Ui.printEmptyTaskList();
+            ui.printEmptyTaskList();
             return;
         }
         System.out.println("     Here are the tasks in your list:");
@@ -44,11 +44,11 @@ public class TaskList {
         try {
             list.get(index).markTaskAsDone();
             if (printMessage) {
-                Ui.printTaskIsMarkedAsDone();
+                ui.printTaskIsMarkedAsDone();
                 System.out.println("      " + list.get(index).getStatusAndDescription());
             }
         } catch (NullPointerException | IndexOutOfBoundsException e) {
-            Ui.printInvalidTaskNumber(list.size());
+            ui.printInvalidTaskNumber(list.size());
         }
     }
 
@@ -61,17 +61,17 @@ public class TaskList {
             }
             list.add(new ToDo(description));
             if (printMessage) {
-                Ui.printGotIt();
+                ui.printGotIt();
                 printStatusDescriptionAndNumberOfTasks();
             }
         } catch (DukeException e) {
-            Ui.printEmptyTodoDescription();
+            ui.printEmptyTodoDescription();
         }
     }
 
     public void addEvent(String description, boolean printMessage) {
         if (!description.contains("/at")) {
-            Ui.printMissingKeyword("/at");
+            ui.printMissingKeyword("/at");
             return;
         }
         description = GeneralMethods.removeCommandFromInput(description, CommandType.event);
@@ -80,19 +80,19 @@ public class TaskList {
          * eventInformation[1] = event date
          */
         if (doNotHaveDescription(eventInformation)) {
-            Ui.printEmptyEventDescription();
+            ui.printEmptyEventDescription();
             return;
         }
         list.add(new Event(eventInformation[0], eventInformation[1].strip()));
         if (printMessage) {
-            Ui.printGotIt();
+            ui.printGotIt();
             printStatusDescriptionAndNumberOfTasks();
         }
     }
 
     public void addDeadline(String description, boolean printMessage) {
         if (!description.contains("/by")) {
-            Ui.printMissingKeyword("/by");
+            ui.printMissingKeyword("/by");
             return;
         }
         description = GeneralMethods.removeCommandFromInput(description, CommandType.deadline);
@@ -101,19 +101,19 @@ public class TaskList {
          * deadlineInformation[1] = deadline date
          */
         if (doNotHaveDescription(deadlineInformation)) {
-            Ui.printEmptyDeadlineDescription();
+            ui.printEmptyDeadlineDescription();
             return;
         }
         list.add(new Deadline(deadlineInformation[0], deadlineInformation[1].strip()));
         if (printMessage) {
-            Ui.printGotIt();
+            ui.printGotIt();
             printStatusDescriptionAndNumberOfTasks();
         }
     }
 
     private void printStatusDescriptionAndNumberOfTasks() {
         System.out.println("       " + list.get(list.size() - 1).getStatusAndDescription());
-        Ui.printNumberOfTasksInList(list.size());
+        ui.printNumberOfTasksInList(list.size());
     }
 
     private boolean doNotHaveDescription(String[] input) {
@@ -132,21 +132,21 @@ public class TaskList {
             if (index >= list.size() || index < 0) {
                 throw new DukeException();
             }
-            Ui.printTaskIsDeleted();
+            ui.printTaskIsDeleted();
             System.out.println("      " + list.get(index).getStatusAndDescription());
             list.remove(index);
-            Ui.printNumberOfTasksInList(list.size());
+            ui.printNumberOfTasksInList(list.size());
         } catch (DukeException e) {
-            Ui.printInvalidTaskNumber(list.size());
+            ui.printInvalidTaskNumber(list.size());
         }
     }
 
     private boolean isTaskListEmptyOrIsCommandTypeInvalid(String command) {
         if (list.isEmpty()) {
-            Ui.printEmptyTaskList();
+            ui.printEmptyTaskList();
             return true;
         } else if (command.isEmpty() || !GeneralMethods.isNumeric(command)) {
-            Ui.printInvalidTaskNumber(list.size());
+            ui.printInvalidTaskNumber(list.size());
             return true;
         }
         return false;
