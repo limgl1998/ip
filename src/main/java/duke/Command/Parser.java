@@ -7,6 +7,7 @@ public class Parser {
 
     private static final TaskList list = new TaskList();
     private static final Ui ui = new Ui();
+    private static final Storage storage = new Storage();
 
     public static boolean handlesInput(String input, boolean printMessage) {
 
@@ -27,7 +28,7 @@ public class Parser {
             } else if (isCommand(input, "delete")) {
                 list.deleteTask(input);
             } else if (isCommand(input, "bye")) {
-                Storage.writeToFile(list);
+                storage.writeToFile(list);
                 return true;
             } else {
                 throw new DukeException();

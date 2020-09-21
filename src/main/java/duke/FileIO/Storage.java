@@ -15,7 +15,7 @@ public class Storage {
 
     public static final int INDEX_OF_TASK_TYPE = 1;
 
-    public static void readFromFile() {
+    public void readFromFile() {
         if (doesFileNotExist()) {
             return;
         }
@@ -30,7 +30,7 @@ public class Storage {
         }
     }
 
-    private static boolean doesFileNotExist() {
+    private boolean doesFileNotExist() {
         File folder = new File("data");
         if (!folder.exists()) {
             System.out.println("\u2639 OOPS!!! Folder does not exist. Creating a folder named \"data\" in the same directory...");
@@ -59,7 +59,7 @@ public class Storage {
         return false;
     }
 
-    public static void writeToFile(TaskList taskList) {
+    public void writeToFile(TaskList taskList) {
         if (doesFileNotExist()) {
             return;
         }

@@ -15,10 +15,10 @@ public class Duke {
     public static void run() {
         Scanner in = new Scanner(System.in);
         boolean endDuke = false;
-
+        Storage storage = new Storage();
         Ui ui = new Ui();
 
-        Storage.readFromFile();
+        storage.readFromFile();
         ui.start();
         while (!endDuke) {
             String command = in.nextLine();
