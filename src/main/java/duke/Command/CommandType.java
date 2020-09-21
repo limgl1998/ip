@@ -1,5 +1,5 @@
 package duke.Command;
 
 public enum CommandType {
-    todo, event, deadline, done, delete
+    todo, event, deadline, done, delete, find
 }

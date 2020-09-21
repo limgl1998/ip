@@ -18,6 +18,10 @@ event
 deadline
 todo
 delete
+list
+find sunday
+find
+find book
 delete 5
 delete -1
 delete 2

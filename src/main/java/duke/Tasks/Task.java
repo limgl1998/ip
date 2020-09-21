@@ -30,6 +30,6 @@ public class Task {
     }
 
     public String getAdditionalInformation() {
-        return null;
+        return "";
     }
 }
