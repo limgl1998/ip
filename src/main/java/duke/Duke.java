@@ -2,25 +2,28 @@ package duke;
 
 import duke.Command.Parser;
 import duke.Command.Ui;
+import duke.Tasks.TaskList;
 
 import java.util.Scanner;
 
 public class Duke {
     private final Ui ui;
     private final Scanner in;
+    private final TaskList list;
 
     public Duke() {
         ui = new Ui();
         in = new Scanner(System.in);
+        list = new TaskList();
     }
 
     public void runUntilByeCommand() {
         boolean endDuke = false;
-        Parser parser = new Parser();
+        Parser parser = new Parser(list);
 
         while (!endDuke) {
             String command = in.nextLine();
-            endDuke = parser.handlesInput(command, true);
+            endDuke = parser.handlesInput(command);
         }
     }
 

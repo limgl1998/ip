@@ -47,10 +47,9 @@ public class TaskList {
      * Prints a done message when it takes in user input
      * Does not print done message when used to load data from save file
      *
-     * @param command
-     * @param printMessage
+     * @param command user input
      */
-    public void markAsDone(String command, boolean printMessage) {
+    public void markAsDone(String command) {
         command = GeneralMethods.removeCommandFromInput(command, CommandType.DONE);
         //Error handling for input "done" without task number
         if (isTaskListEmptyOrIsCommandTypeInvalid(command)) {
@@ -61,10 +60,8 @@ public class TaskList {
         //Error handling for invalid task number
         try {
             list.get(index).markTaskAsDone();
-            if (printMessage) {
-                ui.printTaskIsMarkedAsDone();
-                System.out.println("      " + list.get(index).getStatusAndDescription());
-            }
+            ui.printTaskIsMarkedAsDone();
+            System.out.println("      " + list.get(index).getStatusAndDescription());
         } catch (NullPointerException | IndexOutOfBoundsException e) {
             ui.printInvalidTaskNumber(list.size());
         }
@@ -75,11 +72,10 @@ public class TaskList {
      * Prints a done message when it takes in user input
      * Does not print done message when used to load data from save file
      *
-     * @param description
-     * @param printMessage
+     * @param description user input
      */
 
-    public void addTask(String description, boolean printMessage) {
+    public void addTask(String description) {
         description = GeneralMethods.removeCommandFromInput(description, CommandType.TODO);
 
         try {
@@ -87,10 +83,8 @@ public class TaskList {
                 throw new DukeException();
             }
             list.add(new ToDo(description));
-            if (printMessage) {
-                ui.printGotIt();
-                printStatusDescriptionAndNumberOfTasks();
-            }
+            ui.printGotIt();
+            printStatusDescriptionAndNumberOfTasks();
         } catch (DukeException e) {
             ui.printEmptyTodoDescription();
         }
@@ -101,10 +95,9 @@ public class TaskList {
      * Prints a done message when it takes in user input
      * Does not print done message when used to load data from save file
      *
-     * @param description
-     * @param printMessage
+     * @param description user input
      */
-    public void addEvent(String description, boolean printMessage) {
+    public void addEvent(String description) {
         if (!description.contains(EVENT_KEYWORD)) {
             ui.printMissingKeyword(EVENT_KEYWORD);
             return;
@@ -119,10 +112,8 @@ public class TaskList {
             return;
         }
         list.add(new Event(eventInformation[0], eventInformation[1].strip()));
-        if (printMessage) {
-            ui.printGotIt();
-            printStatusDescriptionAndNumberOfTasks();
-        }
+        ui.printGotIt();
+        printStatusDescriptionAndNumberOfTasks();
     }
 
     /**
@@ -130,10 +121,9 @@ public class TaskList {
      * Prints a done message when it takes in user input
      * Does not print done message when used to load data from save file
      *
-     * @param description
-     * @param printMessage
+     * @param description user input
      */
-    public void addDeadline(String description, boolean printMessage) {
+    public void addDeadline(String description) {
         if (!description.contains(DEADLINE_KEYWORD)) {
             ui.printMissingKeyword(DEADLINE_KEYWORD);
             return;
@@ -148,10 +138,8 @@ public class TaskList {
             return;
         }
         list.add(new Deadline(deadlineInformation[0], deadlineInformation[1].strip()));
-        if (printMessage) {
-            ui.printGotIt();
-            printStatusDescriptionAndNumberOfTasks();
-        }
+        ui.printGotIt();
+        printStatusDescriptionAndNumberOfTasks();
     }
 
     /**
@@ -170,7 +158,7 @@ public class TaskList {
     /**
      * Deletes a task from the list
      *
-     * @param command
+     * @param command user input
      */
     public void deleteTask(String command) {
         command = GeneralMethods.removeCommandFromInput(command, CommandType.DELETE);
@@ -212,7 +200,7 @@ public class TaskList {
      * Looks for the given command in the descriptions and additional information of tasks in list
      * Prints out the description and additional information if found
      *
-     * @param command
+     * @param command user input
      */
 
     public void find(String command) {

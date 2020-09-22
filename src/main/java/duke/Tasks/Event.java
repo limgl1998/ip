@@ -13,10 +13,6 @@ public class Event extends Task {
         this.at = at;
     }
 
-    public String getAt() {
-        return at;
-    }
-
     /**
      * Returns current status, description and event location (at) of Event task
      * @return current status, description and at
