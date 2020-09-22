@@ -1,3 +1,0 @@
-TODO eat [✘] 
-EVENT lunch /at home [✓] 
-DEADLINE homework /by wed [✘] 

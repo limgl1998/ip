@@ -209,7 +209,6 @@ public class TaskList {
             ui.printEmptyFindDescription();
             return;
         }
-        ui.printDashedLine();
         for (Task t : list) {
             if (t.description.toLowerCase().contains(command)
                     || t.getAdditionalInformation().toLowerCase().contains(command)) {
@@ -223,6 +222,5 @@ public class TaskList {
         if (i == 0) {
             ui.printMatchingTasksNotFound();
         }
-        ui.printDashedLine();
     }
 }

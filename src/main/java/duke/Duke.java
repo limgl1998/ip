@@ -19,7 +19,7 @@ public class Duke {
 
     /**
      * Program continuously prompt the user for inputs until
-     * commmand "bye" is keyed in
+     * command "bye" is keyed in
      */
     public void runUntilByeCommand() {
         boolean endDuke = false;
