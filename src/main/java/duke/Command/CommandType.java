@@ -1,9 +1,9 @@
 package duke.Command;
 
 /**
- *  Only type of commands allowed
- *  All other commands not found in this list
- *  are treated as invalid
+ * Only type of commands allowed
+ * All other commands not found in this list
+ * are treated as invalid
  */
 
 public enum CommandType {

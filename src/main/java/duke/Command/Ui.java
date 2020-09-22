@@ -63,7 +63,7 @@ public class Ui {
     }
 
     /**
-     * Tells user input is invalid and suggests range of valid inputs
+     * Tells user the input is invalid and suggests range of valid inputs
      *
      * @param numberOfTasks total number of tasks in the list
      */

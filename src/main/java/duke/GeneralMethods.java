@@ -24,7 +24,7 @@ public class GeneralMethods {
      * Checks if the input command is a number
      *
      * @param command user input
-     * @return whether user input does not contains non numeric
+     * @return whether user input does not contains any non-numeric
      */
     public static boolean isNumeric(String command) {
         if (command.isEmpty()) {

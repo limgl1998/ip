@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  * Task list holds the main arraylist (list) that contains all the information stored
- * It all the functions to modify the list are found here
+ * All the functions to modify the list are found here
  */
 
 public class TaskList {
@@ -43,9 +43,8 @@ public class TaskList {
     }
 
     /**
-     * Changes the done status of the task to done
+     * Changes the status of the task to done
      * Prints a done message when it takes in user input
-     * Does not print done message when used to load data from save file
      *
      * @param command user input
      */
@@ -70,7 +69,6 @@ public class TaskList {
     /**
      * Adds a task to the list
      * Prints a done message when it takes in user input
-     * Does not print done message when used to load data from save file
      *
      * @param description user input
      */
@@ -93,7 +91,6 @@ public class TaskList {
     /**
      * Adds an Event to the list
      * Prints a done message when it takes in user input
-     * Does not print done message when used to load data from save file
      *
      * @param description user input
      */
@@ -107,7 +104,7 @@ public class TaskList {
         /* eventInformation[0] = description of event
          * eventInformation[1] = event date
          */
-        if (doNotHaveDescription(eventInformation)) {
+        if (doesNotHaveDescription(eventInformation)) {
             ui.printEmptyEventDescription();
             return;
         }
@@ -119,7 +116,6 @@ public class TaskList {
     /**
      * Adds a Deadline to the list
      * Prints a done message when it takes in user input
-     * Does not print done message when used to load data from save file
      *
      * @param description user input
      */
@@ -133,7 +129,7 @@ public class TaskList {
         /* deadlineInformation[0] = description of task
          * deadlineInformation[1] = deadline date
          */
-        if (doNotHaveDescription(deadlineInformation)) {
+        if (doesNotHaveDescription(deadlineInformation)) {
             ui.printEmptyDeadlineDescription();
             return;
         }
@@ -151,7 +147,7 @@ public class TaskList {
         ui.printNumberOfTasksInList(list.size());
     }
 
-    private boolean doNotHaveDescription(String[] input) {
+    private boolean doesNotHaveDescription(String[] input) {
         return input.length != NUMBER_OF_PARTS;
     }
 

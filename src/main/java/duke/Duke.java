@@ -17,6 +17,10 @@ public class Duke {
         list = new TaskList();
     }
 
+    /**
+     * Program continuously prompt the user for inputs until
+     * commmand "bye" is keyed in
+     */
     public void runUntilByeCommand() {
         boolean endDuke = false;
         Parser parser = new Parser(list);

@@ -2,31 +2,33 @@ package duke.Tasks;
 
 /**
  * Represents an Event task
- * It has a description, done status and an event at
+ * It has a description, done status and an event location
  */
 
 public class Event extends Task {
-    protected String at;
+    protected String location;
 
-    public Event(String description, String at) {
+    public Event(String description, String location) {
         super(description);
-        this.at = at;
+        this.location = location;
     }
 
     /**
-     * Returns current status, description and event location (at) of Event task
-     * @return current status, description and at
+     * Returns current status, description and event location of Event task
+     *
+     * @return current status, description and location
      */
     @Override
     public String getStatusAndDescription() {
-        return "[E]" + super.getStatusAndDescription() + "(at: " + at + ")";
+        return "[E]" + super.getStatusAndDescription() + "(at: " + location + ")";
     }
 
     /**
-     * Returns event location (at)
-     * @return at
+     * Returns event location
+     *
+     * @return location
      */
     public String getAdditionalInformation() {
-        return at;
+        return location;
     }
 }

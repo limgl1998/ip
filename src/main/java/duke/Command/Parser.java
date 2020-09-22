@@ -5,6 +5,7 @@ import duke.Tasks.TaskList;
 
 public class Parser {
 
+    private static final String LIST_KEYWORD = "list";
     private final TaskList list;
     private static Ui ui;
     private static Storage storage;
@@ -19,6 +20,7 @@ public class Parser {
     /**
      * Takes in the user's input and carry out the instructions if possible
      * Returns if user input is bye
+     * list data is updated upon exit
      *
      * @param input user input
      * @return whether input is BYE
@@ -68,10 +70,11 @@ public class Parser {
      */
     private boolean isCommand(String input, CommandType type) {
         String command = type.toString().toLowerCase();
-        if (input.strip().toLowerCase().contains("list")) {
-            return input.strip().equalsIgnoreCase("list");
+        input = input.strip().toLowerCase();
+        if (input.contains(LIST_KEYWORD)) {
+            return input.equalsIgnoreCase(LIST_KEYWORD);
         } else {
-            return input.strip().toLowerCase().startsWith(command);
+            return input.startsWith(command);
         }
     }
 }
