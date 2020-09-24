@@ -34,14 +34,19 @@ public class Parser {
                 list.printTaskList();
             } else if (isCommand(input, CommandType.DONE)) {
                 list.markAsDone(input);
+                storage.writeToFile(list);
             } else if (isCommand(input, CommandType.DEADLINE)) {
                 list.addDeadline(input);
+                storage.writeToFile(list);
             } else if (isCommand(input, CommandType.EVENT)) {
                 list.addEvent(input);
+                storage.writeToFile(list);
             } else if (isCommand(input, CommandType.TODO)) {
                 list.addTask(input);
+                storage.writeToFile(list);
             } else if (isCommand(input, CommandType.DELETE)) {
                 list.deleteTask(input);
+                storage.writeToFile(list);
             } else if (isCommand(input, CommandType.FIND)) {
                 list.find(input);
             } else if (isCommand(input, CommandType.HELP)) {

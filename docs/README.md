@@ -2,39 +2,39 @@
 
 ## Features 
 
-## Adding tasks to the list
+### Adding tasks to the list
 
 Tasks to be done can be added to the list.
 Tasks include todo, event and deadline.
 
-## Show all tasks in list
+### Show all tasks in list
 
 Tasks in the list can be shown.
 
-## Mark tasks as done.
+### Mark tasks as done.
 
 Completed tasks can be marked as done.
 
-## Removing tasks from list
+### Removing tasks from list
 
 Unwanted tasks can be removed from the list.
 
-## Find task in list
+### Find task in list
 
 Tasks in the list can be searched for by using keywords.
 
-## Save / Load tasks in list
+### Save / Load tasks in list
 
-Data entered into the program will automatically be saved upon exit.
+Data entered into the program will be saved automatically.
 Previously stored data will be loaded into the program upon startup.
 
-## Help
+### Help
 
 A list of all the commands will be shown.
 
-### Usage
+## Usage
 
-## 'todo' - Adds a todo task into the list
+### 'todo' - Adds a todo task into the list
 
 A todo task containing a description will be added to the list
 
@@ -51,7 +51,7 @@ Expected outcome:
     ____________________________________________________________
 
 
-## 'event' - Adds an event into the list
+### 'event' - Adds an event into the list
 
 An event task containing a description and location will be added to the list
 
@@ -70,7 +70,7 @@ Expected outcome:
 
 Note: keyword '/at' needs to be included
 
-## 'deadline' - Adds a deadline task to the list
+### 'deadline' - Adds a deadline task to the list
 
 A deadline task containing a description and a date due will be added to the list
 
@@ -89,7 +89,7 @@ Expected outcome:
 
 Note: keyword '/by' needs to be included
 
-## 'list' - shows all the tasks in the list
+### 'list' - shows all the tasks in the list
 
 A list of tasks along with their descriptions and status will be shown
 
@@ -107,9 +107,9 @@ Expected outcome:
     ____________________________________________________________
 
 
-## 'done' - marks a completed task as done
+### 'done' - marks a completed task as done
 
-A specified task in the list will be marked as done.
+A specified task in the list will be marked as done
 
 Example of usage:
 
@@ -123,9 +123,9 @@ Expected outcome:
     ____________________________________________________________
 
 
-Note: task number should be specified and within the range of total number of tasks.
+Note: task number should be specified and within the range of total number of tasks
 
-## 'delete' - deletes a task in the list
+### 'delete' - deletes a task in the list
 
 An unwanted task in the list will be removed
 
@@ -142,9 +142,9 @@ Expected outcome:
     ____________________________________________________________
 
 
-Note: task number should be specified and within the range of total number of tasks.
+Note: task number should be specified and within the range of total number of tasks
 
-## 'find' - looks for a task in the list
+### 'find' - looks for a task in the list
 
 Locates task(s) containing the keyword(s) entered in the query
 
@@ -162,7 +162,7 @@ Expected outcome:
 
 Note: the keyword maybe be found in either the description or the additional information of the task
 
-## 'help' - a list of all availiable commands will be shown
+### 'help' - a list of all availiable commands will be shown
 
 Example of usage:
 
@@ -175,9 +175,9 @@ Expected outcome:
      todo    : adds a todo task to the list
      eg. todo do homework
      event   : adds an event task to the list
-     eg. event lunch with cousins \at NEX
+     eg. event lunch with cousins /at NEX
      deadline: adds a deadline task to the list
-     eg. deadline iP \by wed
+     eg. deadline iP /by wed
      done    : marks a task in the list as done
      eg. done 1
      delete  : deletes a task in the list
@@ -185,7 +185,7 @@ Expected outcome:
      find    : looks for the keyword in the list
      eg. find lunch
      list    : lists out all the tasks in the list
-     eg list
+     eg. list
      bye     : exits the program
      eg. bye
     ____________________________________________________________

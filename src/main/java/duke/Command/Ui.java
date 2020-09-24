@@ -46,7 +46,7 @@ public class Ui {
     }
 
     public void printInvalidInput() {
-        System.out.println("    " + SAD_SMILEY + " OOPS!!! I'm sorry, but I don't know what that means :-(");
+        System.out.println("    " + SAD_SMILEY + " OOPS!!! I'm sorry, but I don't know what that means");
         printSuggestUsingHelpCommand();
     }
 
@@ -138,9 +138,9 @@ public class Ui {
         System.out.println("     todo    : adds a todo task to the list");
         System.out.println("     eg. todo do homework");
         System.out.println("     event   : adds an event task to the list");
-        System.out.println("     eg. event lunch with cousins \\at NEX");
+        System.out.println("     eg. event lunch with cousins /at NEX");
         System.out.println("     deadline: adds a deadline task to the list");
-        System.out.println("     eg. deadline iP \\by wed");
+        System.out.println("     eg. deadline iP /by wed");
         System.out.println("     done    : marks a task in the list as done");
         System.out.println("     eg. done 1");
         System.out.println("     delete  : deletes a task in the list");
@@ -148,12 +148,12 @@ public class Ui {
         System.out.println("     find    : looks for the keyword in the list");
         System.out.println("     eg. find lunch");
         System.out.println("     list    : lists out all the tasks in the list");
-        System.out.println("     eg list");
+        System.out.println("     eg. list");
         System.out.println("     bye     : exits the program");
         System.out.println("     eg. bye");
     }
 
     private void printSuggestUsingHelpCommand() {
-        System.out.println("      Enter \"help\" to find out about the commands available");
+        System.out.println("      Enter \"help\" to find out more about the commands available");
     }
 }
