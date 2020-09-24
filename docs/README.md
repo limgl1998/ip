@@ -92,12 +92,14 @@ Example of usage:
 list
 
 Expected outcome:
+
     ____________________________________________________________
      Here are the tasks in your list:
      1. [T][✘] buy grocery
      2. [E][✘] lunch (at: Grandma's house)
      3. [D][✘] project (by: next mon)
     ____________________________________________________________
+
 
 ## 'done' - marks a completed task as done
 
@@ -108,10 +110,12 @@ Example of usage:
 done 2
 
 Expected outcome:
+
     ____________________________________________________________
      Nice! I've marked this task as done!
       [E][✓] lunch (at: Grandma's house)
     ____________________________________________________________
+
 
 Note: task number should be specified and within the range of total number of tasks.
 
@@ -124,11 +128,13 @@ Example of usage:
 delete 3
 
 Expected outcome:
+
     ____________________________________________________________
      Noted. I've removed this task:
       [D][✘] project (by: next mon)
      Now you have 2 tasks in the list.
     ____________________________________________________________
+
 
 Note: task number should be specified and within the range of total number of tasks.
 
@@ -141,10 +147,12 @@ Example of usage:
 find Grandma
 
 Expected outcome:
+
     ____________________________________________________________
      Here are the matching tasks in your list:
      1. [E][✓] lunch (at: Grandma's house)
     ____________________________________________________________
+
 
 Note: the keyword maybe be found in either the description or the additional information of the task
 
@@ -155,6 +163,7 @@ Example of usage:
 help
 
 Expected outcome:
+
     ____________________________________________________________
      Here are the commands available in Duke:
      todo    : adds a todo task to the list
@@ -174,4 +183,5 @@ Expected outcome:
      bye     : exits the program
      eg. bye
     ____________________________________________________________
+
 
