@@ -43,11 +43,13 @@ Example of usage:
 todo buy grocery
 
 Expected outcome:
+
     ____________________________________________________________
      Got it. I've added this task:
        [T][✘] buy grocery
      Now you have 1 task in the list.
     ____________________________________________________________
+
 
 ## 'event' - Adds an event into the list
 
@@ -58,11 +60,13 @@ Example of usage:
 event lunch /at Grandma's house
 
 Expected outcome:
+
     ____________________________________________________________
      Got it. I've added this task:
        [E][✘] lunch (at: Grandma's house)
      Now you have 2 tasks in the list.
     ____________________________________________________________
+
 
 Note: keyword '/at' needs to be included
 
@@ -75,11 +79,13 @@ Example of usage:
 deadline project /by next mon
 
 Expected outcome:
+
     ____________________________________________________________
      Got it. I've added this task:
        [D][✘] project (by: next mon)
      Now you have 3 tasks in the list.
     ____________________________________________________________
+
 
 Note: keyword '/by' needs to be included
 
