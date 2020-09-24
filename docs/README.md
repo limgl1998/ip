@@ -11,7 +11,7 @@ Tasks include todo, event and deadline.
 
 Tasks in the list can be shown.
 
-### Mark tasks as done.
+### Mark tasks as done
 
 Completed tasks can be marked as done.
 
