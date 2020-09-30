@@ -138,7 +138,7 @@ public class Ui {
         System.out.println("     todo    : adds a todo task to the list");
         System.out.println("     eg. todo do homework");
         System.out.println("     event   : adds an event task to the list");
-        System.out.println("     eg. event lunch with cousins /at NEX");
+        System.out.println("     eg. event lunch with cousins /at Saturday 3pm");
         System.out.println("     deadline: adds a deadline task to the list");
         System.out.println("     eg. deadline iP /by wed");
         System.out.println("     done    : marks a task in the list as done");

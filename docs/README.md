@@ -53,17 +53,17 @@ Expected outcome:
 
 ### 'event' - Adds an event into the list
 
-An event task containing a description and location will be added to the list
+An event task containing a description and date will be added to the list
 
 Example of usage:
 
-event lunch /at Grandma's house
+event lunch /at Saturday 3pm
 
 Expected outcome:
 
     ____________________________________________________________
      Got it. I've added this task:
-       [E][✘] lunch (at: Grandma's house)
+       [E][✘] lunch (at: Saturday 3pm)
      Now you have 2 tasks in the list.
     ____________________________________________________________
 
@@ -102,7 +102,7 @@ Expected outcome:
     ____________________________________________________________
      Here are the tasks in your list:
      1. [T][✘] buy grocery
-     2. [E][✘] lunch (at: Grandma's house)
+     2. [E][✘] lunch (at: Saturday 3pm)
      3. [D][✘] project (by: next mon)
     ____________________________________________________________
 
@@ -119,7 +119,7 @@ Expected outcome:
 
     ____________________________________________________________
      Nice! I've marked this task as done!
-      [E][✓] lunch (at: Grandma's house)
+      [E][✓] lunch (at: Saturday 3pm)
     ____________________________________________________________
 
 
@@ -150,13 +150,13 @@ Locates task(s) containing the keyword(s) entered in the query
 
 Example of usage:
 
-find Grandma
+find lunch
 
 Expected outcome:
 
     ____________________________________________________________
      Here are the matching tasks in your list:
-     1. [E][✓] lunch (at: Grandma's house)
+     1. [E][✓] lunch (at: Saturday 3pm)
     ____________________________________________________________
 
 
@@ -175,7 +175,7 @@ Expected outcome:
      todo    : adds a todo task to the list
      eg. todo do homework
      event   : adds an event task to the list
-     eg. event lunch with cousins /at NEX
+     eg. event lunch with cousins /at Saturday 3pm
      deadline: adds a deadline task to the list
      eg. deadline iP /by wed
      done    : marks a task in the list as done

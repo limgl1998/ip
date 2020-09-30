@@ -133,7 +133,7 @@ Hello from
      todo    : adds a todo task to the list
      eg. todo do homework
      event   : adds an event task to the list
-     eg. event lunch with cousins /at NEX
+     eg. event lunch with cousins /at Saturday 3pm
      deadline: adds a deadline task to the list
      eg. deadline iP /by wed
      done    : marks a task in the list as done
