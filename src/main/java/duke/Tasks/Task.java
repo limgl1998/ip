@@ -22,6 +22,7 @@ public abstract class Task {
 
     /**
      * Returns description of task
+     *
      * @return description
      */
     public String getDescription() {
@@ -39,6 +40,7 @@ public abstract class Task {
     /**
      * Returns current status icon and description of task
      * Tick for done and cross for not done
+     *
      * @return status icon and description
      */
     public String getStatusAndDescription() {
@@ -47,6 +49,7 @@ public abstract class Task {
 
     /**
      * Returns any other relevant information
+     *
      * @return empty string by default
      */
     public String getAdditionalInformation() {

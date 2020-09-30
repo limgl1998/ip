@@ -7,7 +7,7 @@ public class GeneralMethods {
     /**
      * Returns input with the given command removed
      *
-     * @param input user input
+     * @param input   user input
      * @param command one of the defined commands
      * @return user input without command keyword
      */
